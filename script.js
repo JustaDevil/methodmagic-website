@@ -327,12 +327,3 @@ if (!touch && !reduced) {
   });
 }
 
-/* ---------- Service rows spotlight ---------- */
-if (!touch) {
-  document.querySelectorAll('.svc-list li').forEach((li) => {
-    li.addEventListener('pointermove', (e) => {
-      const r = li.getBoundingClientRect();
-      li.style.setProperty('--mx', ((e.clientX - r.left) / r.width) * 100 + '%');
-    });
-  });
-}
