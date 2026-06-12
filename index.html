@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>METHOD//MAGIC — A Game Success Company</title>
+<meta name="description" content="Embedded game marketing & publishing. Steam, paid UA, creators — orchestrated.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="logo" href="#top" data-hover aria-label="METHOD//MAGIC home">
+      <img class="logo-img" src="assets/logo-dark.png" alt="METHOD//MAGIC">
+    </a>
+    <a class="btn-pill magnetic" href="#contact" data-hover>Let's talk</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="webgl" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-logo">
+        <img class="hero-logo-img" src="assets/logo-dark.png" alt="METHOD//MAGIC">
+      </h1>
+      <p class="hero-tagline">A GAME SUCCESS COMPANY</p>
+      <p class="hero-sub">Embedded marketing &amp; publishing for studios that want results — not reports.</p>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>QUALITY COMMUNICATIONS&nbsp;&nbsp;//&nbsp;&nbsp;IMPACTFUL MARKETING&nbsp;&nbsp;//&nbsp;&nbsp;WISHLIST GROWTH&nbsp;&nbsp;//&nbsp;&nbsp;</span>
+      <span>QUALITY COMMUNICATIONS&nbsp;&nbsp;//&nbsp;&nbsp;IMPACTFUL MARKETING&nbsp;&nbsp;//&nbsp;&nbsp;WISHLIST GROWTH&nbsp;&nbsp;//&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section class="section stats" id="results">
+    <p class="eyebrow" data-reveal>//01&nbsp; THE NUMBERS</p>
+    <div class="stats-grid">
+      <div class="stat" data-reveal data-hover>
+        <span class="stat-value"><span data-count="500" data-prefix="+" data-suffix="K">+500K</span></span>
+        <span class="stat-label">wishlists, one title</span>
+      </div>
+      <div class="stat" data-reveal data-hover>
+        <span class="stat-value">#1</span>
+        <span class="stat-label">Steam best seller</span>
+      </div>
+      <div class="stat" data-reveal data-hover>
+        <span class="stat-value"><span data-count="46" data-suffix="K">46K</span></span>
+        <span class="stat-label">peak concurrency</span>
+      </div>
+      <div class="stat" data-reveal data-hover>
+        <span class="stat-value"><span data-count="22" data-suffix="%">22%</span></span>
+        <span class="stat-label">page conversion, up from 2%</span>
+      </div>
+      <div class="stat" data-reveal data-hover>
+        <span class="stat-value">$1–1.5</span>
+        <span class="stat-label">per wishlist, paid UA</span>
+      </div>
+      <div class="stat" data-reveal data-hover>
+        <span class="stat-value"><span data-count="15" data-suffix="+">15+</span></span>
+        <span class="stat-label">games with 10K+ reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO / ORCHESTRATION -->
+  <section class="section manifesto" id="approach">
+    <p class="eyebrow" data-reveal>//02&nbsp; THE APPROACH</p>
+    <h2 class="manifesto-lines">
+      <span class="fill-line">Not just publishing.</span>
+      <span class="fill-line">Not just marketing.</span>
+      <span class="fill-line grad-text">Orchestration.</span>
+    </h2>
+    <div class="flywheel">
+      <div class="fly-progress" aria-hidden="true"><i></i></div>
+      <div class="fly-steps">
+        <div class="fly-step" data-reveal><span>01</span>Page converts</div>
+        <div class="fly-step" data-reveal><span>02</span>Paid builds cohorts</div>
+        <div class="fly-step" data-reveal><span>03</span>Creators ignite community</div>
+        <div class="fly-step" data-reveal><span>04</span>Steam pushes you</div>
+      </div>
+    </div>
+    <p class="manifesto-note" data-reveal>Each layer amplifies the next.</p>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section class="section strengths" id="why">
+    <p class="eyebrow" data-reveal>//03&nbsp; WHY US</p>
+    <ul class="strength-list">
+      <li data-reveal data-hover>
+        <span class="str-num">01</span>
+        <h3>Decades of experience</h3>
+        <p>AAA to indie. Hands-on, not theoretical.</p>
+      </li>
+      <li data-reveal data-hover>
+        <span class="str-num">02</span>
+        <h3>Data over opinion</h3>
+        <p>We launched games ourselves. We optimize daily.</p>
+      </li>
+      <li data-reveal data-hover>
+        <span class="str-num">03</span>
+        <h3>Built for today</h3>
+        <p>Platforms change. We change faster.</p>
+      </li>
+      <li data-reveal data-hover>
+        <span class="str-num">04</span>
+        <h3>A technology company</h3>
+        <p>We build the tools we work with.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section services" id="services">
+    <p class="eyebrow" data-reveal>//04&nbsp; WHAT WE DO</p>
+    <ul class="svc-list">
+      <li data-reveal data-hover><span class="svc-num">01</span><span class="svc-name">Product Evaluation</span><span class="svc-tag">Market fit, honestly assessed</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">02</span><span class="svc-name">Go-to-Market Planning</span><span class="svc-tag">One timeline, every beat</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">03</span><span class="svc-name">Steam Page Maximization</span><span class="svc-tag">2% → 20%+ conversion</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">04</span><span class="svc-name">Performance Marketing</span><span class="svc-tag">$1–2 per wishlist</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">05</span><span class="svc-name">Asset Production</span><span class="svc-tag">Trailers to key art</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">06</span><span class="svc-name">Creator Strategy</span><span class="svc-tag">~$5 CPM vs $80 direct</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">07</span><span class="svc-name">Steam Ops &amp; Valve Relations</span><span class="svc-tag">Fests, launches, escalations</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">08</span><span class="svc-name">Steam Intelligence</span><span class="svc-tag">Our own platform playbook</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">09</span><span class="svc-name">China Market Engine</span><span class="svc-tag">Bilibili, Douyin, KOLs</span><span class="svc-arrow">→</span></li>
+      <li data-reveal data-hover><span class="svc-num">10</span><span class="svc-name">The Full Stack</span><span class="svc-tag">Localization, PR, local markets</span><span class="svc-arrow">→</span></li>
+    </ul>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="section clients">
+    <p class="eyebrow" data-reveal>//05&nbsp; TRUSTED BY</p>
+    <div class="client-row">
+      <figure class="client" data-hover>
+        <img src="assets/client-tencent.png" alt="Tencent">
+        <figcaption>Portfolio Studios</figcaption>
+      </figure>
+      <figure class="client" data-hover>
+        <img src="assets/client-funplus.png" alt="FunPlus">
+      </figure>
+      <figure class="client" data-hover>
+        <img src="assets/client-krafton.png" alt="Krafton">
+        <figcaption>Portfolio Studios</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="aurora" aria-hidden="true"></div>
+    <h2 class="contact-title split">LET'S TALK</h2>
+    <p class="contact-sub" data-reveal>If your game deserves better.</p>
+    <a class="btn-pill btn-big magnetic" href="mailto:contact@methodmagic.is" data-hover>contact@methodmagic.is</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <a class="logo" href="#top" data-hover>
+    <img class="logo-img logo-img-footer" src="assets/logo-dark.png" alt="METHOD//MAGIC">
+  </a>
+  <p>© 2026 — A Game Success Company</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
