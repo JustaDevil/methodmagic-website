@@ -214,21 +214,20 @@ if (window.gsap) {
       });
     });
 
-    /* Manifesto line fill (scrubbed) */
-    gsap.utils.toArray('.fill-line').forEach((el) => {
-      gsap.to(el, {
-        backgroundSize: '100% 100%',
-        ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top 82%', end: 'top 40%', scrub: 0.4 }
-      });
-    });
-
-    /* Flywheel progress line */
-    gsap.to('.fly-progress i', {
-      scaleX: 1,
-      ease: 'none',
-      scrollTrigger: { trigger: '.flywheel', start: 'top 85%', end: 'top 35%', scrub: 0.4 }
-    });
+    /* Why-us growth chart: bars grow, area fades in, line draws, dot pops */
+    const wvLine = document.querySelector('.wv-line');
+    if (wvLine) {
+      const len = wvLine.getTotalLength();
+      gsap.set(wvLine, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.set('.wv-area', { opacity: 0 });
+      gsap.set('.wv-bar', { scaleY: 0 });
+      gsap.set('.wv-dotwrap', { opacity: 0 });
+      gsap.timeline({ scrollTrigger: { trigger: '.why-viz', start: 'top 78%' } })
+        .to('.wv-bar', { scaleY: 1, duration: 0.8, ease: 'power3.out', stagger: 0.09 })
+        .to('.wv-area', { opacity: 1, duration: 0.8 }, '-=0.5')
+        .to(wvLine, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' }, '-=0.7')
+        .to('.wv-dotwrap', { opacity: 1, duration: 0.4 }, '-=0.25');
+    }
 
     /* Client logos: staggered entrance + idle float */
     gsap.from('.client', {
@@ -256,9 +255,6 @@ if (window.gsap) {
       stagger: 0.04,
       scrollTrigger: { trigger: '.contact', start: 'top 70%' }
     });
-  } else {
-    gsap.set('.fill-line', { backgroundSize: '100% 100%' });
-    gsap.set('.fly-progress i', { scaleX: 1 });
   }
 
   /* Counters */
@@ -326,4 +322,57 @@ if (!touch && !reduced) {
     });
   });
 }
+
+/* ---------- Ambient dust background ---------- */
+(function initDust() {
+  const canvas = document.getElementById('dust');
+  if (!canvas || reduced) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, dpr, particles;
+
+  function make() {
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: (Math.random() * 1.5 + 0.4) * dpr,
+      vx: (Math.random() - 0.5) * 0.12 * dpr,
+      vy: (-Math.random() * 0.22 - 0.04) * dpr,
+      a: Math.random() * 0.35 + 0.08,
+      tw: Math.random() * Math.PI * 2
+    };
+  }
+
+  function setup() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    w = canvas.width = innerWidth * dpr;
+    h = canvas.height = innerHeight * dpr;
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+    const count = Math.max(28, Math.min(80, Math.floor(innerWidth * innerHeight / 24000)));
+    particles = Array.from({ length: count }, make);
+  }
+  setup();
+  addEventListener('resize', setup);
+
+  let vis = true;
+  document.addEventListener('visibilitychange', () => { vis = !document.hidden; });
+
+  (function draw() {
+    requestAnimationFrame(draw);
+    if (!vis) return;
+    ctx.clearRect(0, 0, w, h);
+    for (const p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.tw += 0.02;
+      if (p.y < -12) { p.y = h + 12; p.x = Math.random() * w; }
+      if (p.x < -12) p.x = w + 12; else if (p.x > w + 12) p.x = -12;
+      const flicker = 0.55 + Math.sin(p.tw) * 0.45;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(168, 150, 255, ${(p.a * flicker).toFixed(3)})`;
+      ctx.fill();
+    }
+  })();
+})();
 

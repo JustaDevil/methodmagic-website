@@ -9,10 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
+<canvas id="dust" aria-hidden="true"></canvas>
 <div class="cursor-dot" aria-hidden="true"></div>
 <div class="cursor-ring" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -36,7 +37,7 @@
         <img class="hero-logo-img" src="assets/logo-dark.png" alt="METHOD//MAGIC">
       </h1>
       <p class="hero-tagline">A GAME SUCCESS COMPANY</p>
-      <p class="hero-sub">Embedded marketing &amp; publishing for studios that want results — not reports.</p>
+      <p class="hero-sub">Embedded marketing &amp; publishing for studios that want actual traceable results and growth.</p>
     </div>
     <div class="scroll-cue" aria-hidden="true"><span></span></div>
   </section>
@@ -51,90 +52,34 @@
 
   <!-- STATS -->
   <section class="section stats" id="results">
-    <p class="eyebrow" data-reveal>//01&nbsp; THE NUMBERS</p>
+    <p class="eyebrow" data-reveal>// THE NUMBERS</p>
     <div class="stats-grid">
       <div class="stat" data-reveal data-hover>
-        <span class="stat-value"><span data-count="500" data-prefix="+" data-suffix="K">+500K</span></span>
-        <span class="stat-label">wishlists, one title</span>
+        <span class="stat-value">Millions</span>
+        <span class="stat-label">of organic wishlists grown</span>
+      </div>
+      <div class="stat" data-reveal data-hover>
+        <span class="stat-value"><span data-count="22" data-suffix="%">22%</span></span>
+        <span class="stat-label">visit-to-wishlist conversion</span>
       </div>
       <div class="stat" data-reveal data-hover>
         <span class="stat-value">#1</span>
         <span class="stat-label">Steam best seller</span>
       </div>
       <div class="stat" data-reveal data-hover>
-        <span class="stat-value"><span data-count="46" data-suffix="K">46K</span></span>
-        <span class="stat-label">peak concurrency</span>
-      </div>
-      <div class="stat" data-reveal data-hover>
-        <span class="stat-value"><span data-count="22" data-suffix="%">22%</span></span>
-        <span class="stat-label">page conversion, up from 2%</span>
-      </div>
-      <div class="stat" data-reveal data-hover>
         <span class="stat-value">$1–1.5</span>
-        <span class="stat-label">per wishlist, paid UA</span>
-      </div>
-      <div class="stat" data-reveal data-hover>
-        <span class="stat-value"><span data-count="15" data-suffix="+">15+</span></span>
-        <span class="stat-label">games with 10K+ reviews</span>
+        <span class="stat-label">cost per wishlist, paid UA</span>
       </div>
     </div>
-  </section>
-
-  <!-- MANIFESTO / ORCHESTRATION -->
-  <section class="section manifesto" id="approach">
-    <p class="eyebrow" data-reveal>//02&nbsp; THE APPROACH</p>
-    <h2 class="manifesto-lines">
-      <span class="fill-line">Not just publishing.</span>
-      <span class="fill-line">Not just marketing.</span>
-      <span class="fill-line grad-text">Orchestration.</span>
-    </h2>
-    <div class="flywheel">
-      <div class="fly-progress" aria-hidden="true"><i></i></div>
-      <div class="fly-steps">
-        <div class="fly-step" data-reveal><span>01</span>Page converts</div>
-        <div class="fly-step" data-reveal><span>02</span>Paid builds cohorts</div>
-        <div class="fly-step" data-reveal><span>03</span>Creators ignite community</div>
-        <div class="fly-step" data-reveal><span>04</span>Steam pushes you</div>
-      </div>
-    </div>
-    <p class="manifesto-note" data-reveal>Each layer amplifies the next.</p>
-  </section>
-
-  <!-- STRENGTHS -->
-  <section class="section strengths" id="why">
-    <p class="eyebrow" data-reveal>//03&nbsp; WHY US</p>
-    <ul class="strength-list">
-      <li data-reveal data-hover>
-        <span class="str-num">01</span>
-        <h3>Decades of experience</h3>
-        <p>AAA to indie. Hands-on, not theoretical.</p>
-      </li>
-      <li data-reveal data-hover>
-        <span class="str-num">02</span>
-        <h3>Data over opinion</h3>
-        <p>We launched games ourselves. We optimize daily.</p>
-      </li>
-      <li data-reveal data-hover>
-        <span class="str-num">03</span>
-        <h3>Built for today</h3>
-        <p>Platforms change. We change faster.</p>
-      </li>
-      <li data-reveal data-hover>
-        <span class="str-num">04</span>
-        <h3>A technology company</h3>
-        <p>We build the tools we work with.</p>
-      </li>
-    </ul>
   </section>
 
   <!-- SERVICES -->
   <section class="section services" id="services">
-    <p class="eyebrow" data-reveal>//04&nbsp; WHAT WE DO</p>
+    <p class="eyebrow" data-reveal>// WHAT WE DO</p>
     <div class="svc-grid">
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">01//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
         </div>
         <h3>Product Evaluation</h3>
@@ -143,7 +88,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">02//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <h3>Go-to-Market Planning</h3>
@@ -152,7 +96,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">03//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5.5"/><line x1="7" y1="12.5" x2="11" y2="12.5"/><line x1="9" y1="10.5" x2="9" y2="14.5"/><circle cx="15.5" cy="14" r="0.4"/><circle cx="18" cy="11.5" r="0.4"/></svg>
         </div>
         <h3>Steam Page Maximization</h3>
@@ -161,7 +104,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">04//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 17 8.5 10.5 13.5 15.5 22 7"/><polyline points="15 7 22 7 22 14"/></svg>
         </div>
         <h3>Performance Marketing</h3>
@@ -170,7 +112,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">05//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="2"/><path d="m22 8.5-7 3.5 7 3.5z"/></svg>
         </div>
         <h3>Asset Production</h3>
@@ -179,7 +120,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">06//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20v-1.5a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5V20"/><circle cx="17.5" cy="9" r="2.5"/><path d="M18.5 13.5a4.5 4.5 0 0 1 3 4.2V19"/></svg>
         </div>
         <h3>Creator Strategy</h3>
@@ -188,7 +128,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">07//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
         </div>
         <h3>Steam Ops</h3>
@@ -197,7 +136,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">08//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="18" y1="20" x2="18" y2="4"/></svg>
         </div>
         <h3>Steam Intelligence</h3>
@@ -206,7 +144,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">09//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.7 2.6 4 6 4 9.5s-1.3 6.9-4 9.5c-2.7-2.6-4-6-4-9.5s1.3-6.9 4-9.5z"/></svg>
         </div>
         <h3>China Market Engine</h3>
@@ -215,7 +152,6 @@
 
       <article class="svc-tile" data-reveal data-hover>
         <div class="svc-head">
-          <span class="svc-num">10//</span>
           <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 6.5L12 15 2 8.5z"/><polyline points="2 15.5 12 22 22 15.5"/></svg>
         </div>
         <h3>The Full Stack</h3>
@@ -225,9 +161,89 @@
     </div>
   </section>
 
+  <!-- WHY US -->
+  <section class="section why" id="why">
+    <p class="eyebrow" data-reveal>// WHY US</p>
+    <div class="why-inner">
+      <ul class="strength-list">
+        <li data-reveal data-hover>
+          <span class="str-num">01</span>
+          <div class="str-text">
+            <h3>Decades of experience</h3>
+            <p>AAA to indie. Hands-on, not theoretical.</p>
+          </div>
+        </li>
+        <li data-reveal data-hover>
+          <span class="str-num">02</span>
+          <div class="str-text">
+            <h3>Data over opinion</h3>
+            <p>We launched games ourselves. We optimize daily.</p>
+          </div>
+        </li>
+        <li data-reveal data-hover>
+          <span class="str-num">03</span>
+          <div class="str-text">
+            <h3>Built for today</h3>
+            <p>Platforms change. We change faster.</p>
+          </div>
+        </li>
+        <li data-reveal data-hover>
+          <span class="str-num">04</span>
+          <div class="str-text">
+            <h3>A technology company</h3>
+            <p>We build the tools we work with.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="why-viz" data-reveal aria-hidden="true">
+        <div class="why-viz-inner">
+          <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="wvLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#6FA2FF"/>
+                <stop offset="1" stop-color="#8A3FFC"/>
+              </linearGradient>
+              <linearGradient id="wvArea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#8A3FFC" stop-opacity="0.35"/>
+                <stop offset="1" stop-color="#8A3FFC" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="wvBar" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#542AD6" stop-opacity="0.55"/>
+                <stop offset="1" stop-color="#0F54CD" stop-opacity="0.12"/>
+              </linearGradient>
+            </defs>
+            <rect x="1" y="1" width="438" height="378" rx="18" fill="rgba(255,255,255,0.02)" stroke="rgba(242,241,252,0.12)"/>
+            <g stroke="rgba(242,241,252,0.07)" stroke-width="1">
+              <line x1="40" y1="110" x2="410" y2="110"/>
+              <line x1="40" y1="180" x2="410" y2="180"/>
+              <line x1="40" y1="250" x2="410" y2="250"/>
+              <line x1="40" y1="320" x2="410" y2="320"/>
+            </g>
+            <g fill="url(#wvBar)">
+              <rect class="wv-bar" x="52"  y="250" width="34" height="70"/>
+              <rect class="wv-bar" x="112" y="210" width="34" height="110"/>
+              <rect class="wv-bar" x="172" y="225" width="34" height="95"/>
+              <rect class="wv-bar" x="232" y="170" width="34" height="150"/>
+              <rect class="wv-bar" x="292" y="130" width="34" height="190"/>
+              <rect class="wv-bar" x="352" y="80"  width="34" height="240"/>
+            </g>
+            <path class="wv-area" d="M69,320 L69,262 129,236 189,242 249,196 309,150 369,100 400,80 L400,320 Z" fill="url(#wvArea)"/>
+            <path class="wv-line" d="M69,262 129,236 189,242 249,196 309,150 369,100 400,80" fill="none" stroke="url(#wvLine)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <g class="wv-dotwrap">
+              <circle class="wv-ring" cx="400" cy="80" r="7" fill="none" stroke="#8A3FFC" stroke-width="2"/>
+              <circle class="wv-dot" cx="400" cy="80" r="5" fill="#CDBEFF"/>
+            </g>
+          </svg>
+          <span class="why-viz-tag">// TRACEABLE GROWTH</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CLIENTS -->
   <section class="section clients">
-    <p class="eyebrow" data-reveal>//05&nbsp; TRUSTED BY</p>
+    <p class="eyebrow" data-reveal>// TRUSTED BY</p>
     <div class="client-row">
       <figure class="client" data-hover>
         <img src="assets/client-tencent.png" alt="Tencent">
@@ -264,6 +280,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>
