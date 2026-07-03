@@ -213,7 +213,7 @@ main, .site-footer { position: relative; z-index: 1; }
   margin-top: 1.6rem;
   max-width: 34ch;
   font-size: clamp(1rem, 1.6vw, 1.2rem);
-  color: var(--muted);
+  color: rgba(242, 241, 252, 0.86);
 }
 
 .scroll-cue {

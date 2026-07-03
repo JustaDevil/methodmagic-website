@@ -16,15 +16,15 @@ if (!reduced && window.Lenis) {
   const canvas = document.getElementById('webgl');
   if (!canvas || !window.THREE || reduced) { if (canvas && reduced) canvas.style.opacity = 0.35; if (!window.THREE) return; }
   try {
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
     camera.position.set(0, 2.2, 9);
     camera.lookAt(0, 0, 0);
 
-    const COLS = 130, ROWS = 60;
+    const COLS = 100, ROWS = 46;
     const COUNT = COLS * ROWS;
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
@@ -97,7 +97,7 @@ if (!reduced && window.Lenis) {
     /* Mouse glow: dots brighten near the cursor's point on the field */
     const raycaster = new THREE.Raycaster();
     const ndc = new THREE.Vector2();
-    let gx = 0, gz = 0, glow = 0;
+    let gx = 0, gz = 0, glow = 0, wasGlow = false;
     const GLOW_R2 = 3.4 * 3.4;
 
     function frame() {
@@ -128,16 +128,20 @@ if (!reduced && window.Lenis) {
       gz += (tz - gz) * 0.12;
       glow += (targetGlow - glow) * 0.08;
 
-      for (let j = 0; j < COUNT; j++) {
-        const dx = pos.array[j * 3] - gx;
-        const dz = pos.array[j * 3 + 2] - gz;
-        let f = glow * Math.max(0, 1 - (dx * dx + dz * dz) / GLOW_R2);
-        f = f * f * 1.6;
-        col.array[j * 3]     = Math.min(1, base[j * 3]     * (1 + f) + f * 0.22);
-        col.array[j * 3 + 1] = Math.min(1, base[j * 3 + 1] * (1 + f) + f * 0.22);
-        col.array[j * 3 + 2] = Math.min(1, base[j * 3 + 2] * (1 + f) + f * 0.32);
+      /* Only touch the color buffer while the glow is active (or fading out). */
+      if (glow > 0.003 || wasGlow) {
+        for (let j = 0; j < COUNT; j++) {
+          const dx = pos.array[j * 3] - gx;
+          const dz = pos.array[j * 3 + 2] - gz;
+          let f = glow * Math.max(0, 1 - (dx * dx + dz * dz) / GLOW_R2);
+          f = f * f * 1.6;
+          col.array[j * 3]     = Math.min(1, base[j * 3]     * (1 + f) + f * 0.22);
+          col.array[j * 3 + 1] = Math.min(1, base[j * 3 + 1] * (1 + f) + f * 0.22);
+          col.array[j * 3 + 2] = Math.min(1, base[j * 3 + 2] * (1 + f) + f * 0.32);
+        }
+        col.needsUpdate = true;
+        wasGlow = glow > 0.003;
       }
-      col.needsUpdate = true;
 
       camera.position.x += (mx * 1.4 - camera.position.x) * 0.04;
       camera.position.y += (2.2 - my * 0.8 - camera.position.y) * 0.04;
@@ -343,12 +347,12 @@ if (!touch && !reduced) {
   }
 
   function setup() {
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    w = canvas.width = innerWidth * dpr;
-    h = canvas.height = innerHeight * dpr;
+    dpr = 1; /* dust is a soft blur — no need for retina density */
+    w = canvas.width = innerWidth;
+    h = canvas.height = innerHeight;
     canvas.style.width = innerWidth + 'px';
     canvas.style.height = innerHeight + 'px';
-    const count = Math.max(28, Math.min(80, Math.floor(innerWidth * innerHeight / 24000)));
+    const count = Math.max(24, Math.min(64, Math.floor(innerWidth * innerHeight / 30000)));
     particles = Array.from({ length: count }, make);
   }
   setup();
@@ -357,9 +361,12 @@ if (!touch && !reduced) {
   let vis = true;
   document.addEventListener('visibilitychange', () => { vis = !document.hidden; });
 
-  (function draw() {
+  const FRAME = 1000 / 30; /* throttle drift to ~30fps */
+  let last = 0;
+  (function draw(now) {
     requestAnimationFrame(draw);
-    if (!vis) return;
+    if (!vis || (now - last) < FRAME) return;
+    last = now;
     ctx.clearRect(0, 0, w, h);
     for (const p of particles) {
       p.x += p.vx;
