@@ -11,6 +11,34 @@ if (!reduced && window.Lenis) {
   requestAnimationFrame(raf);
 }
 
+/* ---------- Seamless marquee (fills any viewport, constant speed) ---------- */
+(function initMarquee() {
+  const track = document.getElementById('marqueeTrack');
+  if (!track) return;
+  const PHRASE = 'QUALITY COMMUNICATIONS  //  IMPACTFUL MARKETING  //  WISHLIST GROWTH  //  ';
+  const SPEED = 70; /* px per second */
+
+  function build() {
+    track.innerHTML = '';
+    const group = document.createElement('div');
+    group.className = 'mq-group';
+    track.appendChild(group);
+    do {
+      const s = document.createElement('span');
+      s.textContent = PHRASE;
+      group.appendChild(s);
+    } while (group.offsetWidth < innerWidth + 120 && group.children.length < 60);
+    const groupWidth = group.offsetWidth;
+    track.appendChild(group.cloneNode(true)); /* identical second half → seamless -50% loop */
+    track.style.setProperty('--mq-dur', (groupWidth / SPEED).toFixed(1) + 's');
+  }
+
+  build();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  let rt;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 200); });
+})();
+
 /* ---------- three.js particle field ---------- */
 (function initWebGL() {
   const canvas = document.getElementById('webgl');

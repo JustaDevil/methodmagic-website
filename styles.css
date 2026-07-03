@@ -252,8 +252,10 @@ main, .site-footer { position: relative; z-index: 1; }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 26s linear infinite;
+  animation: marquee var(--mq-dur, 40s) linear infinite;
 }
+
+.mq-group { display: flex; flex: 0 0 auto; }
 
 .marquee-track span {
   font-family: var(--display);
