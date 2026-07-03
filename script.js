@@ -312,6 +312,61 @@ addEventListener('scroll', () => {
   header.classList.toggle('scrolled', scrollY > 40);
 }, { passive: true });
 
+/* ---------- Navigation ---------- */
+(function initNav() {
+  const header = document.querySelector('.site-header');
+  const nav = document.getElementById('siteNav');
+  const toggle = document.getElementById('navToggle');
+  if (!header || !nav || !toggle) return;
+
+  function closeMenu() {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    if (lenis) lenis.start();
+  }
+
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (lenis) { open ? lenis.stop() : lenis.start(); }
+  });
+
+  /* Smooth-scroll in-page anchors, offset for the fixed header */
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const target = id === '#top' ? document.body : document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      if (nav.classList.contains('open')) closeMenu();
+      const offset = header.offsetHeight + 6;
+      if (lenis) {
+        lenis.scrollTo(id === '#top' ? 0 : target, { offset: -offset });
+      } else {
+        const y = id === '#top' ? 0 : target.getBoundingClientRect().top + scrollY - offset;
+        scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
+      }
+    });
+  });
+
+  /* Scrollspy: highlight the section currently in view */
+  const linkFor = {};
+  nav.querySelectorAll('a').forEach((a) => { linkFor[a.getAttribute('href').slice(1)] = a; });
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      nav.querySelectorAll('a').forEach((l) => l.classList.remove('active'));
+      const a = linkFor[en.target.id];
+      if (a) a.classList.add('active');
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  ['results', 'services', 'why', 'clients', 'contact'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+})();
+
 /* ---------- Custom cursor ---------- */
 if (!touch) {
   const dot = document.querySelector('.cursor-dot');
