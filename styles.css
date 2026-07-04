@@ -437,9 +437,6 @@ main, .site-footer { position: relative; z-index: 1; }
   height: 100svh;
   overflow: hidden;
   perspective: 1100px;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 112%, rgba(91, 124, 250, 0.10), transparent 70%),
-    #07070f;
 }
 
 .nums-kicker {
@@ -459,8 +456,8 @@ main, .site-footer { position: relative; z-index: 1; }
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
-  padding: 0 8vw;
+  align-items: flex-start;
+  padding: clamp(104px, 17vh, 200px) 8vw 0;
   box-sizing: border-box;
   will-change: transform, opacity;
   backface-visibility: hidden;
