@@ -429,7 +429,7 @@ main, .site-footer { position: relative; z-index: 1; }
 
 .nums { position: relative; }
 
-.nums-track { position: relative; height: 3800px; }
+.nums-track { position: relative; height: 3200px; }
 
 .nums-pin {
   position: sticky;
@@ -549,7 +549,7 @@ main, .site-footer { position: relative; z-index: 1; }
 .nums-rail {
   position: absolute;
   right: clamp(14px, 3vw, 40px);
-  top: 50%;
+  top: 32%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -569,14 +569,32 @@ main, .site-footer { position: relative; z-index: 1; }
 
 .nums-hint {
   position: absolute;
-  bottom: 28px;
+  bottom: clamp(24px, 5vh, 40px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
-  color: #7a7f94;
-  font-size: 13px;
-  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #9096ad;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
   transition: opacity 0.4s ease;
+}
+
+.nums-hint-arrow {
+  font-size: 18px;
+  line-height: 1;
+  color: #8b5cf6;
+  animation: numsBounce 1.6s ease-in-out infinite;
+}
+
+@keyframes numsBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(7px); opacity: 1; }
 }
 
 /* ---------- Why Us ---------- */
@@ -673,6 +691,8 @@ main, .site-footer { position: relative; z-index: 1; }
 }
 
 /* ---------- Services ---------- */
+
+.services { padding-top: clamp(28px, 5vh, 60px); }
 
 .svc-grid {
   display: grid;
@@ -853,6 +873,6 @@ main, .site-footer { position: relative; z-index: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .scroll-cue span, .grain, .aurora, .site-bg-img, .nums-mask-img { animation: none; }
+  .marquee-track, .scroll-cue span, .grain, .aurora, .site-bg-img, .nums-mask-img, .nums-hint-arrow { animation: none; }
   html { scroll-behavior: auto; }
 }
