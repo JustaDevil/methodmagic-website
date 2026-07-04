@@ -312,6 +312,57 @@ addEventListener('scroll', () => {
   header.classList.toggle('scrolled', scrollY > 40);
 }, { passive: true });
 
+/* ---------- The Numbers: zigzag slot reel ---------- */
+(function initNumbers() {
+  const track = document.getElementById('numsTrack');
+  if (!track) return;
+  const slides = [...track.querySelectorAll('[data-slide]')];
+  const dots = [...track.querySelectorAll('[data-dot]')];
+  const hint = track.querySelector('[data-hint]');
+  const N = slides.length;
+  if (!N) return;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+  function run() {
+    const rect = track.getBoundingClientRect();
+    const max = rect.height - innerHeight;
+    const p = max > 0 ? clamp(-rect.top / max, 0, 1) : 0;
+    const idx = p * (N - 1);
+    for (let i = 0; i < N; i++) {
+      const s = slides[i];
+      const d = i - idx;
+      const ad = Math.abs(d);
+      const vis = ad < 1.05;
+      s.style.visibility = vis ? 'visible' : 'hidden';
+      if (!vis) continue;
+      const a = clamp(d, -1, 1);
+      const dir = i % 2 === 0 ? 1 : -1;
+      s.style.opacity = String(clamp(1 - ad * 1.15, 0, 1));
+      if (reduced) {
+        s.style.transform = 'none';
+        s.style.filter = 'none';
+      } else {
+        s.style.transform =
+          'translateX(' + (dir * d * 55) + '%) translateY(' + (d * 18) + '%) ' +
+          'rotateY(' + (dir * -a * 62) + 'deg) rotateX(' + (-a * 24) + 'deg) ' +
+          'translateZ(' + (-ad * 160) + 'px)';
+        s.style.filter = 'blur(' + (ad * 5).toFixed(2) + 'px)';
+      }
+    }
+    const act = clamp(Math.round(idx), 0, N - 1);
+    for (let i = 0; i < dots.length; i++) dots[i].classList.toggle('on', i === act);
+    if (hint) hint.style.opacity = p < 0.02 ? '1' : '0';
+  }
+
+  let raf = 0;
+  const onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; run(); }); };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  if (lenis) lenis.on('scroll', onScroll);
+  run();
+  setTimeout(run, 400);
+})();
+
 /* ---------- Navigation ---------- */
 (function initNav() {
   const header = document.querySelector('.site-header');

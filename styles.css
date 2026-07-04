@@ -425,43 +425,161 @@ main, .site-footer { position: relative; z-index: 1; }
   margin-bottom: clamp(2rem, 5vh, 3.5rem);
 }
 
-/* ---------- Stats ---------- */
+/* ---------- The Numbers — zigzag slot reel ---------- */
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid var(--faint);
-  border-left: 1px solid var(--faint);
+.nums { position: relative; }
+
+.nums-track { position: relative; height: 3800px; }
+
+.nums-pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  perspective: 1100px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 112%, rgba(91, 124, 250, 0.10), transparent 70%),
+    #07070f;
 }
 
-.stat {
-  padding: clamp(28px, 4vw, 52px) clamp(22px, 3vw, 44px);
-  border-right: 1px solid var(--faint);
-  border-bottom: 1px solid var(--faint);
-  transition: background 0.3s ease;
-}
-
-.stat:hover { background: rgba(110, 70, 255, 0.06); }
-
-.stat-value {
-  display: block;
+.nums-kicker {
+  position: absolute;
+  top: clamp(26px, 5vh, 44px);
+  left: clamp(20px, 6vw, 64px);
+  margin: 0;
+  z-index: 3;
   font-family: var(--display);
-  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+  font-size: 0.8rem;
   font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #8b5cf6;
+}
+
+.nums-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 8vw;
+  box-sizing: border-box;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.nums-slide.nums-right { justify-content: flex-end; }
+.nums-slide.nums-left { justify-content: flex-start; }
+
+.nums-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2.4vh, 24px);
+  max-width: 84vw;
+}
+
+.nums-right .nums-col { align-items: flex-end; text-align: right; }
+.nums-left .nums-col { align-items: flex-start; text-align: left; }
+
+.nums-big {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1;
   letter-spacing: -0.02em;
-  line-height: 1.05;
-  background: var(--grad);
+  font-size: clamp(84px, 18vw, 260px);
+  background: linear-gradient(100deg, #5f83ff, #a78bfa);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-.stat-label {
-  display: block;
-  margin-top: 0.7rem;
-  color: var(--muted);
-  font-size: 0.95rem;
-  font-weight: 600;
+.nums-nowrap { white-space: nowrap; font-size: clamp(58px, 12vw, 180px); }
+.nums-money { font-size: clamp(64px, 15vw, 240px); }
+
+.nums-cap {
+  margin: 0;
+  font-size: clamp(15px, 2vw, 28px);
+  color: #8e93a9;
+  max-width: 22ch;
+}
+
+.nums-row { display: flex; align-items: center; gap: clamp(20px, 4vw, 56px); }
+
+.nums-keyart {
+  width: clamp(180px, 26vw, 340px);
+  aspect-ratio: 340 / 180;
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+  transform: rotate(3deg);
+  box-shadow: 0 20px 60px rgba(91, 124, 250, 0.25);
+}
+
+.nums-mask {
+  position: relative;
+  width: min(760px, 60vw);
+  aspect-ratio: 760 / 300;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20760%20300%22%3E%3Ctext%20x%3D%22380%22%20y%3D%22242%22%20font-family%3D%22Arial%20Black%2CArial%2Csans-serif%22%20font-size%3D%22252%22%20font-weight%3D%22900%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%3E5M%2B%3C%2Ftext%3E%3C%2Fsvg%3E");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20760%20300%22%3E%3Ctext%20x%3D%22380%22%20y%3D%22242%22%20font-family%3D%22Arial%20Black%2CArial%2Csans-serif%22%20font-size%3D%22252%22%20font-weight%3D%22900%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%3E5M%2B%3C%2Ftext%3E%3C%2Fsvg%3E");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+}
+
+.nums-mask-img {
+  position: absolute;
+  inset: 0;
+  background-image: url("assets/nums-collage.jpg");
+  background-size: auto 240%;
+  background-repeat: no-repeat;
+  animation: numsPan 34s linear infinite alternate;
+}
+
+.nums-mask-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(95, 131, 255, 0.2), rgba(167, 139, 250, 0.2));
+  pointer-events: none;
+}
+
+@keyframes numsPan {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+.nums-rail {
+  position: absolute;
+  right: clamp(14px, 3vw, 40px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 3;
+}
+
+.nums-rail span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease;
+}
+
+.nums-rail span.on { background: #8b5cf6; transform: scale(1.5); }
+
+.nums-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: #7a7f94;
+  font-size: 13px;
+  letter-spacing: 2px;
+  transition: opacity 0.4s ease;
 }
 
 /* ---------- Why Us ---------- */
@@ -737,11 +855,7 @@ main, .site-footer { position: relative; z-index: 1; }
   .svc-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 560px) {
-  .stats-grid { grid-template-columns: 1fr; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .scroll-cue span, .grain, .aurora, .site-bg-img { animation: none; }
+  .marquee-track, .scroll-cue span, .grain, .aurora, .site-bg-img, .nums-mask-img { animation: none; }
   html { scroll-behavior: auto; }
 }
