@@ -410,59 +410,9 @@ if (!touch && !reduced) {
   });
 }
 
-/* ---------- Ambient dust background ---------- */
-(function initDust() {
-  const canvas = document.getElementById('dust');
-  if (!canvas || reduced) return;
-  const ctx = canvas.getContext('2d');
-  let w, h, dpr, particles;
-
-  function make() {
-    return {
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: (Math.random() * 1.5 + 0.4) * dpr,
-      vx: (Math.random() - 0.5) * 0.12 * dpr,
-      vy: (-Math.random() * 0.22 - 0.04) * dpr,
-      a: Math.random() * 0.35 + 0.08,
-      tw: Math.random() * Math.PI * 2
-    };
-  }
-
-  function setup() {
-    dpr = 1; /* dust is a soft blur — no need for retina density */
-    w = canvas.width = innerWidth;
-    h = canvas.height = innerHeight;
-    canvas.style.width = innerWidth + 'px';
-    canvas.style.height = innerHeight + 'px';
-    const count = Math.max(24, Math.min(64, Math.floor(innerWidth * innerHeight / 30000)));
-    particles = Array.from({ length: count }, make);
-  }
-  setup();
-  addEventListener('resize', setup);
-
-  let vis = true;
-  document.addEventListener('visibilitychange', () => { vis = !document.hidden; });
-
-  const FRAME = 1000 / 30; /* throttle drift to ~30fps */
-  let last = 0;
-  (function draw(now) {
-    requestAnimationFrame(draw);
-    if (!vis || (now - last) < FRAME) return;
-    last = now;
-    ctx.clearRect(0, 0, w, h);
-    for (const p of particles) {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.tw += 0.02;
-      if (p.y < -12) { p.y = h + 12; p.x = Math.random() * w; }
-      if (p.x < -12) p.x = w + 12; else if (p.x > w + 12) p.x = -12;
-      const flicker = 0.55 + Math.sin(p.tw) * 0.45;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(168, 150, 255, ${(p.a * flicker).toFixed(3)})`;
-      ctx.fill();
-    }
-  })();
-})();
+/* ---------- Animated site background (below hero) ---------- */
+if (!reduced && window.MethodMagicHeroBG) {
+  const bgEl = document.querySelector('.site-bg');
+  if (bgEl) MethodMagicHeroBG.init(bgEl, { motionSpeed: 0.55, particleDensity: 0.5 });
+}
 
