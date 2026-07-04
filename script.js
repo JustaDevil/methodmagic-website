@@ -413,6 +413,6 @@ if (!touch && !reduced) {
 /* ---------- Animated site background (below hero) ---------- */
 if (!reduced && window.MethodMagicHeroBG) {
   const bgEl = document.querySelector('.site-bg');
-  if (bgEl) MethodMagicHeroBG.init(bgEl, { motionSpeed: 0.55, particleDensity: 0.5 });
+  if (bgEl) MethodMagicHeroBG.init(bgEl, { motionSpeed: 0.9, particleDensity: 0.5 });
 }
 
