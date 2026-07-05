@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://methodmagic.is/sitemap.xml
