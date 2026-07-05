@@ -140,11 +140,15 @@ main, .site-footer { position: relative; z-index: 1; }
 .logo-img-footer { height: 40px; }
 
 .btn-pill {
-  display: inline-block;
-  padding: 12px 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  white-space: nowrap;
+  padding: 14px 28px;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   text-decoration: none;
   color: #fff;
   background: var(--grad-strong);
@@ -252,13 +256,16 @@ main, .site-footer { position: relative; z-index: 1; }
   .site-nav a { font-size: 1.1rem; }
   .site-nav a::after { display: none; }
 
-  .nav-cta-mobile {
-    display: inline-block;
+  .site-nav a.nav-cta-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     margin-top: 10px;
-    padding: 13px 30px;
+    padding: 16px 34px;
     border-radius: 999px;
     background: var(--grad-strong);
-    color: #fff !important;
+    color: #fff;
     letter-spacing: 0.08em;
     box-shadow: 0 0 28px rgba(84, 42, 214, 0.45);
   }
@@ -385,7 +392,7 @@ main, .site-footer { position: relative; z-index: 1; }
 }
 
 .eyebrow {
-  font-size: 0.98rem;
+  font-size: 1.18rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   color: var(--violet-soft);
@@ -413,7 +420,7 @@ main, .site-footer { position: relative; z-index: 1; }
   margin: 0;
   z-index: 3;
   font-family: var(--display);
-  font-size: 0.98rem;
+  font-size: 1.18rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   color: #8b5cf6;
@@ -611,6 +618,7 @@ main, .site-footer { position: relative; z-index: 1; }
   font-size: clamp(1.4rem, 2.4vw, 1.9rem);
   font-weight: 700;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
 .strength-list p { color: var(--muted); font-size: 1.12rem; line-height: 1.6; margin-top: 0.4rem; }
@@ -671,7 +679,7 @@ main, .site-footer { position: relative; z-index: 1; }
 .wwd-kicker {
   color: #8B5CF6;
   font-family: var(--display);
-  font-size: 17px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: 0.3em;
 }
