@@ -14,8 +14,8 @@
   --grad-strong: linear-gradient(100deg, #0F54CD 0%, #542AD6 100%);
   --logo-slash: linear-gradient(165deg, #B23ADA 0%, #5B2EE0 100%);
   --logo-magic: linear-gradient(180deg, #3552FF 0%, #1E2FBE 100%);
-  --font: "Manrope", "Avenir Next", "Avenir", sans-serif;
-  --display: "Space Grotesk", "Manrope", sans-serif;
+  --font: "Hanken Grotesk", "Avenir Next", "Avenir", sans-serif;
+  --display: "Bricolage Grotesque", "Hanken Grotesk", sans-serif;
   --logo-font: "Archivo Black", "Arial Black", sans-serif;
 }
 
