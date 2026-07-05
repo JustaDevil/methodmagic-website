@@ -385,7 +385,7 @@ main, .site-footer { position: relative; z-index: 1; }
 }
 
 .eyebrow {
-  font-size: 0.78rem;
+  font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   color: var(--violet-soft);
@@ -413,7 +413,7 @@ main, .site-footer { position: relative; z-index: 1; }
   margin: 0;
   z-index: 3;
   font-family: var(--display);
-  font-size: 0.8rem;
+  font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   color: #8b5cf6;
@@ -474,8 +474,10 @@ main, .site-footer { position: relative; z-index: 1; }
   height: auto;
   object-fit: cover;
   border-radius: 14px;
-  transform: rotate(3deg);
+  transform: rotate(3deg) translateZ(0);
   box-shadow: 0 20px 60px rgba(91, 124, 250, 0.25);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .nums-mask {
@@ -606,12 +608,12 @@ main, .site-footer { position: relative; z-index: 1; }
 
 .strength-list h3 {
   font-family: var(--display);
-  font-size: clamp(1.2rem, 2.1vw, 1.6rem);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-.strength-list p { color: var(--muted); font-size: 0.98rem; margin-top: 0.3rem; }
+.strength-list p { color: var(--muted); font-size: 1.12rem; line-height: 1.6; margin-top: 0.4rem; }
 
 /* Why-us animated growth graphic */
 
@@ -669,7 +671,7 @@ main, .site-footer { position: relative; z-index: 1; }
 .wwd-kicker {
   color: #8B5CF6;
   font-family: var(--display);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: 0.3em;
 }
@@ -757,7 +759,7 @@ main, .site-footer { position: relative; z-index: 1; }
 
 .wwd-num {
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.25em;
   color: rgba(255, 255, 255, 0.35);
   transition: color 0.45s ease;
@@ -782,16 +784,16 @@ main, .site-footer { position: relative; z-index: 1; }
 .wwd-body {
   margin: 0;
   font-family: var(--font);
-  font-size: 15px;
-  line-height: 1.85;
-  color: #9a9cb0;
-  max-width: 54ch;
+  font-size: 18px;
+  line-height: 1.75;
+  color: #b3b6c6;
+  max-width: 52ch;
   text-wrap: pretty;
 }
 
 .wwd-metric {
   display: none;
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.05em;
   color: var(--accent);
 }

@@ -346,7 +346,8 @@ addEventListener('scroll', () => {
           'translateX(' + (dir * d * 55) + '%) translateY(' + (d * 18) + '%) ' +
           'rotateY(' + (dir * -a * 62) + 'deg) rotateX(' + (-a * 24) + 'deg) ' +
           'translateZ(' + (-ad * 160) + 'px)';
-        s.style.filter = 'blur(' + (ad * 5).toFixed(2) + 'px)';
+        /* light blur only — capped low so blurring the keyart image doesn't stutter */
+        s.style.filter = ad > 0.04 ? 'blur(' + Math.min(ad * 2.2, 2.4).toFixed(2) + 'px)' : 'none';
       }
     }
     const act = clamp(Math.round(idx), 0, N - 1);
