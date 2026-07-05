@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 
@@ -18,8 +18,6 @@
   <canvas class="mm-hero-canvas"></canvas>
   <div class="site-bg-vignette"></div>
 </div>
-<div class="cursor-dot" aria-hidden="true"></div>
-<div class="cursor-ring" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="site-header" id="top">
@@ -119,90 +117,293 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="section services" id="services">
-    <p class="eyebrow" data-reveal>// WHAT WE DO</p>
-    <div class="svc-grid">
+  <!-- WHAT WE DO — schematic scroll section -->
+  <section class="wwd" id="services">
+    <div class="wwd-kicker">// WHAT WE DO</div>
+    <div class="wwd-grid">
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
-        </div>
-        <h3>Product Evaluation</h3>
-        <p>Documentation analysis, playtests, and honest market references — defining product-market fit and positioning before a dollar is spent.</p>
-      </article>
+      <!-- LEFT: sticky schematic panel -->
+      <div class="wwd-left">
+        <div class="wwd-panel">
+          <div class="wwd-glow" style="background: radial-gradient(520px 420px at 50% 46%, #22D3EE14, transparent 70%);"></div>
+          <div class="wwd-counter" style="color:#22D3EE;">01 / 10</div>
+          <div class="wwd-caption-wrap"><div class="wwd-caption">PRODUCT EVALUATION</div></div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </div>
-        <h3>Go-to-Market Planning</h3>
-        <p>Campaign spine, beat calendar, positioning, and budget allocation — every milestone on one timeline with clear owners and KPIs.</p>
-      </article>
+          <!-- 0 · Product Evaluation -->
+          <div class="wwd-anim active" data-anim="0">
+            <div style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 42px;">
+              <div style="display: flex; gap: clamp(8px, 2.5%, 18px); justify-content: center; width: calc(100% - 36px);">
+                <div style="position: relative; width: 116px; max-width: 31%; height: 148px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; animation: mmLift 4.5s ease-in-out infinite;">
+                  <div style="position: absolute; inset: -1px; border: 1px solid #22D3EE; box-shadow: 0 0 20px rgba(34,211,238,0.35), inset 0 0 16px rgba(34,211,238,0.12); opacity: 0; animation: mmGlowSeq 4.5s ease-in-out infinite;"></div>
+                  <img src="assets/icon-swords.png" alt="Action" style="width: 46px; height: 46px; object-fit: contain;">
+                  <div style="font-family: var(--font); font-size: 11px; font-weight: 600; letter-spacing: .12em; color: #cfd1dd; white-space: nowrap;">ACTION</div>
+                </div>
+                <div style="position: relative; width: 116px; max-width: 31%; height: 148px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; animation: mmLift 4.5s ease-in-out infinite; animation-delay: 1.5s;">
+                  <div style="position: absolute; inset: -1px; border: 1px solid #5B8CFF; box-shadow: 0 0 20px rgba(91,140,255,0.35), inset 0 0 16px rgba(91,140,255,0.12); opacity: 0; animation: mmGlowSeq 4.5s ease-in-out infinite; animation-delay: 1.5s;"></div>
+                  <img src="assets/icon-shield.png" alt="RPG" style="width: 46px; height: 46px; object-fit: contain;">
+                  <div style="font-family: var(--font); font-size: 11px; font-weight: 600; letter-spacing: .12em; color: #cfd1dd; white-space: nowrap;">RPG</div>
+                </div>
+                <div style="position: relative; width: 116px; max-width: 31%; height: 148px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; animation: mmLift 4.5s ease-in-out infinite; animation-delay: 3s;">
+                  <div style="position: absolute; inset: -1px; border: 1px solid #A78BFA; box-shadow: 0 0 20px rgba(167,139,250,0.35), inset 0 0 16px rgba(167,139,250,0.12); opacity: 0; animation: mmGlowSeq 4.5s ease-in-out infinite; animation-delay: 3s;"></div>
+                  <img src="assets/icon-knight.png" alt="Strategy" style="width: 46px; height: 46px; object-fit: contain;">
+                  <div style="font-family: var(--font); font-size: 11px; font-weight: 600; letter-spacing: .12em; color: #cfd1dd; white-space: nowrap;">STRATEGY</div>
+                </div>
+              </div>
+              <div style="font-family: var(--font); color: #9a9cb0; font-size: 12px; letter-spacing: 2px;">fit / positioning / approach</div>
+            </div>
+          </div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5.5"/><line x1="7" y1="12.5" x2="11" y2="12.5"/><line x1="9" y1="10.5" x2="9" y2="14.5"/><circle cx="15.5" cy="14" r="0.4"/><circle cx="18" cy="11.5" r="0.4"/></svg>
-        </div>
-        <h3>Steam Page Maximization</h3>
-        <p>Capsule suite, A/B testing, copy and tags rebuilt around what converts — 2–3% → 20%+ sustained visit-to-wishlist with the right inputs.</p>
-      </article>
+          <!-- 1 · GTM Planning -->
+          <div class="wwd-anim" data-anim="1">
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+              <defs><linearGradient id="gr1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8B5CF6"></stop><stop offset="1" stop-color="#E879F9"></stop></linearGradient></defs>
+              <line x1="45" y1="188" x2="315" y2="188" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" stroke-linecap="round"></line>
+              <line x1="45" y1="188" x2="315" y2="188" stroke="url(#gr1)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="600" stroke-dashoffset="600" style="animation: mmDraw600 6s ease-in-out infinite; filter: drop-shadow(0 0 5px rgba(139,92,246,0.6));"></line>
+              <circle cx="70" cy="188" r="6" fill="#8B5CF6" style="filter: drop-shadow(0 0 7px rgba(139,92,246,0.9)); animation: mmFade 6s ease infinite;"></circle>
+              <circle cx="70" cy="188" r="15" stroke="#8B5CF6" stroke-width="1" style="transform-box: fill-box; transform-origin: center; animation: mmRing 6s ease-out infinite;"></circle>
+              <circle cx="132" cy="188" r="6" fill="#A78BFA" style="filter: drop-shadow(0 0 7px rgba(167,139,250,0.9)); animation: mmFade 6s ease infinite; animation-delay: .8s;"></circle>
+              <circle cx="132" cy="188" r="15" stroke="#A78BFA" stroke-width="1" style="transform-box: fill-box; transform-origin: center; animation: mmRing 6s ease-out infinite; animation-delay: .8s;"></circle>
+              <circle cx="194" cy="188" r="7" fill="#C084FC" style="filter: drop-shadow(0 0 9px rgba(192,132,252,1)); animation: mmFade 6s ease infinite; animation-delay: 1.6s;"></circle>
+              <circle cx="194" cy="188" r="17" stroke="#C084FC" stroke-width="1" style="transform-box: fill-box; transform-origin: center; animation: mmRing 6s ease-out infinite; animation-delay: 1.6s;"></circle>
+              <circle cx="256" cy="188" r="6" fill="#D8B4FE" style="filter: drop-shadow(0 0 7px rgba(216,180,254,0.9)); animation: mmFade 6s ease infinite; animation-delay: 2.4s;"></circle>
+              <circle cx="315" cy="188" r="7" fill="#E879F9" style="filter: drop-shadow(0 0 10px rgba(232,121,249,1)); animation: mmFade 6s ease infinite; animation-delay: 3.2s;"></circle>
+              <circle cx="315" cy="188" r="17" stroke="#E879F9" stroke-width="1" style="transform-box: fill-box; transform-origin: center; animation: mmRing 6s ease-out infinite; animation-delay: 3.2s;"></circle>
+              <line x1="194" y1="170" x2="194" y2="122" stroke="rgba(192,132,252,0.6)" stroke-width="1.5" style="animation: mmFade 6s ease infinite; animation-delay: 1.6s;"></line>
+              <text x="194" y="110" fill="#D8B4FE" font-size="12" font-family="Hanken Grotesk" text-anchor="middle" style="animation: mmFade 6s ease infinite; animation-delay: 1.6s;">demo</text>
+              <text x="70" y="222" fill="#9a9cb0" font-size="11" font-family="Hanken Grotesk" text-anchor="middle">announce</text>
+              <text x="315" y="222" fill="#9a9cb0" font-size="11" font-family="Hanken Grotesk" text-anchor="middle">launch</text>
+              <text x="180" y="290" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle" letter-spacing="2">one timeline · every beat</text>
+            </svg>
+          </div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 17 8.5 10.5 13.5 15.5 22 7"/><polyline points="15 7 22 7 22 14"/></svg>
-        </div>
-        <h3>Performance Marketing</h3>
-        <p>In-house media buying with weekly readouts — $1–2 per wishlist in top markets, cohorts built for playtests, demos, and launch.</p>
-      </article>
+          <!-- 2 · Steam Page Conversion -->
+          <div class="wwd-anim" data-anim="2">
+            <img src="assets/steam-logo.png" alt="Steam" style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 128px; opacity: .85;">
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+              <defs><linearGradient id="gr2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#8B5CF6"></stop><stop offset="1" stop-color="#E879F9"></stop></linearGradient></defs>
+              <line x1="70" y1="252" x2="290" y2="252" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-linecap="round"></line>
+              <rect x="102" y="228" width="34" height="24" rx="4" fill="rgba(255,255,255,0.14)"></rect>
+              <text x="119" y="278" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle">2–3%</text>
+              <path d="M158,196 C186,196 186,148 214,148" stroke="rgba(232,121,249,0.5)" stroke-width="1.5" stroke-dasharray="4 6" style="animation: mmDash 1.1s linear infinite;"></path>
+              <path d="M212,142 L224,148 L212,154 Z" fill="rgba(232,121,249,0.7)"></path>
+              <rect x="228" y="92" width="34" height="160" rx="4" fill="url(#gr2)" style="transform-box: fill-box; transform-origin: bottom; animation: mmRise 4s cubic-bezier(.2,.8,.2,1) infinite; filter: drop-shadow(0 0 12px rgba(232,121,249,0.45));"></rect>
+              <text x="245" y="76" fill="#E879F9" font-size="15" font-weight="700" font-family="Hanken Grotesk" text-anchor="middle" style="animation: mmFade 4s ease infinite;">20%+</text>
+              <text x="245" y="278" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle">ours</text>
+              <text x="180" y="320" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle" letter-spacing="2">visit → wishlist</text>
+            </svg>
+          </div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="2"/><path d="m22 8.5-7 3.5 7 3.5z"/></svg>
-        </div>
-        <h3>Asset Production</h3>
-        <p>Trailers, cutdowns, shorts, and social — in-house on a tight loop. Hero trailers and 3D key art through managed specialist vendors.</p>
-      </article>
+          <!-- 3 · Performance Marketing -->
+          <div class="wwd-anim" data-anim="3">
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+              <defs><linearGradient id="gr3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5B8CFF"></stop><stop offset="1" stop-color="#22D3EE"></stop></linearGradient></defs>
+              <circle cx="54" cy="104" r="5" fill="#5B8CFF" style="filter: drop-shadow(0 0 7px rgba(91,140,255,0.9)); animation: mmPulse 3s ease-in-out infinite;"></circle>
+              <circle cx="54" cy="164" r="5" fill="#7DA2FF" style="filter: drop-shadow(0 0 7px rgba(125,162,255,0.9)); animation: mmPulse 3s ease-in-out infinite; animation-delay: .5s;"></circle>
+              <circle cx="54" cy="224" r="5" fill="#22D3EE" style="filter: drop-shadow(0 0 7px rgba(34,211,238,0.9)); animation: mmPulse 3s ease-in-out infinite; animation-delay: 1s;"></circle>
+              <path d="M62,104 C120,104 130,164 178,164" stroke="rgba(91,140,255,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="5 8" style="animation: mmDash 1.1s linear infinite;"></path>
+              <path d="M62,164 L178,164" stroke="rgba(125,162,255,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="5 8" style="animation: mmDash 1.1s linear infinite;"></path>
+              <path d="M62,224 C120,224 130,164 178,164" stroke="rgba(34,211,238,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="5 8" style="animation: mmDash 1.1s linear infinite;"></path>
+              <circle cx="196" cy="164" r="16" stroke="url(#gr3)" stroke-width="2.5" style="filter: drop-shadow(0 0 12px rgba(91,140,255,0.6));"></circle>
+              <circle cx="196" cy="164" r="7" fill="#5B8CFF" style="filter: drop-shadow(0 0 8px rgba(91,140,255,0.9)); animation: mmPulse 2.4s ease-in-out infinite;"></circle>
+              <circle cx="196" cy="164" r="32" stroke="#5B8CFF" stroke-width="1" style="transform-box: fill-box; transform-origin: center; animation: mmRing 3s ease-out infinite;"></circle>
+              <text x="196" y="112" fill="#7DD3FC" font-size="13" font-weight="700" font-family="Hanken Grotesk" text-anchor="middle">$1–1.5 / wishlist</text>
+              <path d="M214,156 C248,142 256,122 288,114" stroke="rgba(34,211,238,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 7" style="animation: mmDash 1.2s linear infinite;"></path>
+              <path d="M214,164 L288,164" stroke="rgba(34,211,238,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 7" style="animation: mmDash 1.2s linear infinite;"></path>
+              <path d="M214,172 C248,186 256,206 288,214" stroke="rgba(34,211,238,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 7" style="animation: mmDash 1.2s linear infinite;"></path>
+              <circle cx="294" cy="112" r="4.5" fill="#22D3EE" style="filter: drop-shadow(0 0 7px rgba(34,211,238,0.9)); animation: mmFade 4.2s ease infinite; animation-delay: .5s;"></circle>
+              <circle cx="294" cy="164" r="4.5" fill="#7DD3FC" style="filter: drop-shadow(0 0 7px rgba(125,211,252,0.9)); animation: mmFade 4.2s ease infinite; animation-delay: 1.1s;"></circle>
+              <circle cx="294" cy="216" r="4.5" fill="#A5F3FC" style="filter: drop-shadow(0 0 7px rgba(165,243,252,0.9)); animation: mmFade 4.2s ease infinite; animation-delay: 1.7s;"></circle>
+              <text x="294" y="94" fill="#9a9cb0" font-size="11" font-family="Hanken Grotesk" text-anchor="middle">playtests</text>
+              <text x="294" y="148" fill="#9a9cb0" font-size="11" font-family="Hanken Grotesk" text-anchor="middle">demos</text>
+              <text x="294" y="240" fill="#9a9cb0" font-size="11" font-family="Hanken Grotesk" text-anchor="middle">launch</text>
+              <text x="180" y="300" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle" letter-spacing="2">cohorts that compound</text>
+            </svg>
+          </div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20v-1.5a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5V20"/><circle cx="17.5" cy="9" r="2.5"/><path d="M18.5 13.5a4.5 4.5 0 0 1 3 4.2V19"/></svg>
-        </div>
-        <h3>Creator Strategy</h3>
-        <p>Vetting, briefing, and end-to-end campaign management — briefs that lift engagement up to 50%, at ~$5 CPM vs $80–90 for direct deals.</p>
-      </article>
+          <!-- 4 · Asset Production -->
+          <div class="wwd-anim" data-anim="4">
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+              <defs><linearGradient id="gr4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBBF24"></stop><stop offset="1" stop-color="#FB7185"></stop></linearGradient></defs>
+              <rect x="120" y="76" width="120" height="120" rx="26" stroke="url(#gr4)" stroke-width="2" style="filter: drop-shadow(0 0 10px rgba(251,191,36,0.35));"></rect>
+              <circle cx="180" cy="136" r="52" stroke="#FBBF24" stroke-width="1" style="transform-box: fill-box; transform-origin: center; animation: mmRing 3.4s ease-out infinite;"></circle>
+              <path d="M168,116 L200,136 L168,156 Z" fill="url(#gr4)" style="filter: drop-shadow(0 0 8px rgba(251,146,60,0.7));"></path>
+              <rect x="92" y="226" width="176" height="9" rx="4.5" fill="rgba(251,191,36,0.75)" style="transform-box: fill-box; transform-origin: left; animation: mmScaleX 3.4s cubic-bezier(.2,.8,.2,1) infinite;"></rect>
+              <rect x="92" y="245" width="122" height="9" rx="4.5" fill="rgba(251,146,60,0.55)" style="transform-box: fill-box; transform-origin: left; animation: mmScaleX 3.4s cubic-bezier(.2,.8,.2,1) infinite; animation-delay: .35s;"></rect>
+              <rect x="92" y="264" width="84" height="9" rx="4.5" fill="rgba(251,113,133,0.45)" style="transform-box: fill-box; transform-origin: left; animation: mmScaleX 3.4s cubic-bezier(.2,.8,.2,1) infinite; animation-delay: .7s;"></rect>
+              <text x="180" y="315" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle" letter-spacing="2">trailers · cutdowns · shorts</text>
+            </svg>
+          </div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
-        </div>
-        <h3>Steam Ops</h3>
-        <p>Next Fest, themed fests, launches, playtests, and approvals — the full submission cycle, with a direct escalation path when timing matters.</p>
-      </article>
+          <!-- 5 · Creator Strategy -->
+          <div class="wwd-anim" data-anim="5">
+            <div style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 42px;">
+              <div style="display: flex; gap: clamp(8px, 2.5%, 18px); align-items: flex-end; justify-content: center; width: calc(100% - 36px);">
+                <div style="position: relative; width: 108px; max-width: 31%; height: 140px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; animation: mmFloat 5s ease-in-out infinite;">
+                  <div style="position: absolute; inset: -1px; border: 1px solid #FB7185; box-shadow: 0 0 20px rgba(251,113,133,0.35), inset 0 0 16px rgba(251,113,133,0.12); opacity: 0; animation: mmGlowSeq 4.5s ease-in-out infinite;"></div>
+                  <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 3px; align-items: flex-end; height: 16px;">
+                    <span style="width: 3px; height: 16px; background: #FB7185; transform-origin: bottom; animation: mmEq .9s ease-in-out infinite;"></span>
+                    <span style="width: 3px; height: 16px; background: #FB7185; transform-origin: bottom; animation: mmEq .9s ease-in-out infinite; animation-delay: .18s;"></span>
+                    <span style="width: 3px; height: 16px; background: #FB7185; transform-origin: bottom; animation: mmEq .9s ease-in-out infinite; animation-delay: .36s;"></span>
+                  </div>
+                  <div style="width: 80px; height: 101px; background: linear-gradient(180deg, #FB7185, #E879F9); mask-image: url('assets/silhouette_left.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: bottom center; -webkit-mask-image: url('assets/silhouette_left.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: bottom center;"></div>
+                </div>
+                <div style="position: relative; width: 108px; max-width: 31%; height: 154px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; animation: mmFloat 5s ease-in-out infinite; animation-delay: .6s;">
+                  <div style="position: absolute; inset: -1px; border: 1px solid #E879F9; box-shadow: 0 0 20px rgba(232,121,249,0.35), inset 0 0 16px rgba(232,121,249,0.12); opacity: 0; animation: mmGlowSeq 4.5s ease-in-out infinite; animation-delay: 1.5s;"></div>
+                  <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 3px; align-items: flex-end; height: 16px;">
+                    <span style="width: 3px; height: 16px; background: #E879F9; transform-origin: bottom; animation: mmEq .8s ease-in-out infinite; animation-delay: .1s;"></span>
+                    <span style="width: 3px; height: 16px; background: #E879F9; transform-origin: bottom; animation: mmEq .8s ease-in-out infinite; animation-delay: .28s;"></span>
+                    <span style="width: 3px; height: 16px; background: #E879F9; transform-origin: bottom; animation: mmEq .8s ease-in-out infinite; animation-delay: .46s;"></span>
+                  </div>
+                  <div style="width: 80px; height: 112px; background: linear-gradient(180deg, #E879F9, #A78BFA); mask-image: url('assets/silhouette_center.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: bottom center; -webkit-mask-image: url('assets/silhouette_center.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: bottom center;"></div>
+                </div>
+                <div style="position: relative; width: 108px; max-width: 31%; height: 132px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; animation: mmFloat 5s ease-in-out infinite; animation-delay: 1.2s;">
+                  <div style="position: absolute; inset: -1px; border: 1px solid #FDA4AF; box-shadow: 0 0 20px rgba(253,164,175,0.35), inset 0 0 16px rgba(253,164,175,0.12); opacity: 0; animation: mmGlowSeq 4.5s ease-in-out infinite; animation-delay: 3s;"></div>
+                  <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 3px; align-items: flex-end; height: 16px;">
+                    <span style="width: 3px; height: 16px; background: #FDA4AF; transform-origin: bottom; animation: mmEq 1s ease-in-out infinite; animation-delay: .05s;"></span>
+                    <span style="width: 3px; height: 16px; background: #FDA4AF; transform-origin: bottom; animation: mmEq 1s ease-in-out infinite; animation-delay: .25s;"></span>
+                    <span style="width: 3px; height: 16px; background: #FDA4AF; transform-origin: bottom; animation: mmEq 1s ease-in-out infinite; animation-delay: .45s;"></span>
+                  </div>
+                  <div style="width: 80px; height: 96px; background: linear-gradient(180deg, #FDA4AF, #FB7185); mask-image: url('assets/silhouette_right.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: bottom center; -webkit-mask-image: url('assets/silhouette_right.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: bottom center;"></div>
+                </div>
+              </div>
+              <div style="font-family: var(--font); color: #9a9cb0; font-size: 12px; letter-spacing: 2px;">~$5 CPM vs $80–90 direct</div>
+            </div>
+          </div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="18" y1="20" x2="18" y2="4"/></svg>
-        </div>
-        <h3>Steam Intelligence</h3>
-        <p>Our own playbook built from real platform data — store traffic triggers, funnel mechanics, and what actually moves conversion.</p>
-      </article>
+          <!-- 6 · Steam Ops -->
+          <div class="wwd-anim" data-anim="6">
+            <img src="assets/steam-logo.png" alt="Steam" style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 128px; opacity: .85;">
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+              <line x1="96" y1="86" x2="96" y2="248" stroke="rgba(45,212,191,0.2)" stroke-width="1.5" stroke-linecap="round"></line>
+              <circle cx="96" cy="86" r="13" stroke="#2DD4BF" stroke-width="1.5" fill="rgba(45,212,191,0.08)"></circle>
+              <path d="M90,86 l4.5,5 l8,-10" stroke="#2DD4BF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" style="animation: mmDraw40 6s ease infinite; filter: drop-shadow(0 0 6px rgba(45,212,191,0.7));"></path>
+              <circle cx="96" cy="140" r="13" stroke="#2DD4BF" stroke-width="1.5" fill="rgba(45,212,191,0.08)"></circle>
+              <path d="M90,140 l4.5,5 l8,-10" stroke="#2DD4BF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" style="animation: mmDraw40 6s ease infinite; animation-delay: .7s; filter: drop-shadow(0 0 6px rgba(45,212,191,0.7));"></path>
+              <circle cx="96" cy="194" r="13" stroke="#34D399" stroke-width="1.5" fill="rgba(52,211,153,0.08)"></circle>
+              <path d="M90,194 l4.5,5 l8,-10" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" style="animation: mmDraw40 6s ease infinite; animation-delay: 1.4s; filter: drop-shadow(0 0 6px rgba(52,211,153,0.7));"></path>
+              <circle cx="96" cy="248" r="13" stroke="#A7F3D0" stroke-width="1.5" fill="rgba(167,243,208,0.06)"></circle>
+              <circle cx="96" cy="248" r="24" stroke="#34D399" stroke-width="1" style="transform-box: fill-box; transform-origin: center; animation: mmRing 6s ease-out infinite; animation-delay: 2.4s;"></circle>
+              <path d="M90,248 l4.5,5 l8,-10" stroke="#A7F3D0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" style="animation: mmDraw40 6s ease infinite; animation-delay: 2.1s; filter: drop-shadow(0 0 6px rgba(167,243,208,0.8));"></path>
+              <text x="128" y="91" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk">next fest</text>
+              <text x="128" y="145" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk">playtest</text>
+              <text x="128" y="199" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk">approvals</text>
+              <text x="128" y="253" fill="#D1FAE5" font-size="12" font-family="Hanken Grotesk">launch — live</text>
+              <text x="180" y="312" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle" letter-spacing="2">submission → live</text>
+            </svg>
+          </div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.7 2.6 4 6 4 9.5s-1.3 6.9-4 9.5c-2.7-2.6-4-6-4-9.5s1.3-6.9 4-9.5z"/></svg>
-        </div>
-        <h3>China Market Engine</h3>
-        <p>A dedicated native-speaking manager, full cultural adaptation, and Bilibili / Douyin KOL activations timed to your beats.</p>
-      </article>
+          <!-- 7 · Steam Intelligence -->
+          <div class="wwd-anim" data-anim="7">
+            <img src="assets/steam-logo.png" alt="Steam" style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 128px; opacity: .85;">
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+              <defs><linearGradient id="gr7" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A78BFA"></stop><stop offset="1" stop-color="#22D3EE"></stop></linearGradient></defs>
+              <path d="M84,84 L276,84 L246,132 L114,132 Z" stroke="rgba(167,139,250,0.7)" stroke-width="1.5" fill="rgba(167,139,250,0.06)" stroke-linejoin="round"></path>
+              <path d="M118,150 L242,150 L220,198 L140,198 Z" stroke="rgba(129,140,248,0.6)" stroke-width="1.5" fill="rgba(129,140,248,0.06)" stroke-linejoin="round"></path>
+              <path d="M144,216 L216,216 L202,264 L158,264 Z" stroke="url(#gr7)" stroke-width="2" fill="rgba(34,211,238,0.07)" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(34,211,238,0.4));"></path>
+              <circle cx="180" cy="76" r="4" fill="#A78BFA" style="filter: drop-shadow(0 0 6px rgba(167,139,250,0.9)); animation: mmFall 2.8s cubic-bezier(.4,0,.7,1) infinite;"></circle>
+              <circle cx="160" cy="76" r="3.5" fill="#22D3EE" style="filter: drop-shadow(0 0 6px rgba(34,211,238,0.9)); animation: mmFall 2.8s cubic-bezier(.4,0,.7,1) infinite; animation-delay: .95s;"></circle>
+              <circle cx="200" cy="76" r="3.5" fill="#818CF8" style="filter: drop-shadow(0 0 6px rgba(129,140,248,0.9)); animation: mmFall 2.8s cubic-bezier(.4,0,.7,1) infinite; animation-delay: 1.9s;"></circle>
+              <text x="292" y="112" fill="#9a9cb0" font-size="11" font-family="Hanken Grotesk">traffic</text>
+              <text x="292" y="178" fill="#9a9cb0" font-size="11" font-family="Hanken Grotesk">funnel</text>
+              <text x="292" y="244" fill="#7DD3FC" font-size="11" font-family="Hanken Grotesk">conv.</text>
+              <text x="180" y="308" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle" letter-spacing="2">what actually moves it</text>
+            </svg>
+          </div>
 
-      <article class="svc-tile" data-reveal data-hover>
-        <div class="svc-head">
-          <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 6.5L12 15 2 8.5z"/><polyline points="2 15.5 12 22 22 15.5"/></svg>
+          <!-- 8 · China Market Engine -->
+          <div class="wwd-anim" data-anim="8">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 46px;">
+              <div style="position: relative;">
+                <div style="position: absolute; inset: -18px; border: 1px solid rgba(244,63,94,0.55); border-radius: 22px; animation: mmRingBox 3.2s ease-out infinite;"></div>
+                <div style="position: absolute; inset: -18px; border: 1px solid rgba(251,191,36,0.45); border-radius: 22px; animation: mmRingBox 3.2s ease-out infinite; animation-delay: 1.6s;"></div>
+                <img src="assets/flag-china.png" alt="Flag of China" style="display: block; width: 210px; border-radius: 14px; box-shadow: 0 24px 60px rgba(244,63,94,0.3); animation: mmFloat 5.5s ease-in-out infinite;">
+              </div>
+              <div style="display: flex; gap: 12px;">
+                <span style="border: 1px solid rgba(251,146,60,0.5); color: #FDBA74; padding: 8px 16px; font-size: 12px; letter-spacing: .16em; font-family: var(--font); font-weight: 600; animation: mmPulse 3.6s ease-in-out infinite;">BILIBILI</span>
+                <span style="border: 1px solid rgba(244,63,94,0.5); color: #FDA4AF; padding: 8px 16px; font-size: 12px; letter-spacing: .16em; font-family: var(--font); font-weight: 600; animation: mmPulse 3.6s ease-in-out infinite; animation-delay: 1.2s;">DOUYIN</span>
+                <span style="border: 1px solid rgba(251,191,36,0.5); color: #FDE68A; padding: 8px 16px; font-size: 12px; letter-spacing: .16em; font-family: var(--font); font-weight: 600; animation: mmPulse 3.6s ease-in-out infinite; animation-delay: 2.4s;">KOL WAVES</span>
+              </div>
+              <div style="font-family: var(--font); color: #9a9cb0; font-size: 12px; letter-spacing: 2px;">timed to your beats</div>
+            </div>
+          </div>
+
+          <!-- 9 · The Full Stack -->
+          <div class="wwd-anim" data-anim="9">
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+              <defs><linearGradient id="gr9" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8B5CF6"></stop><stop offset=".5" stop-color="#5B8CFF"></stop><stop offset="1" stop-color="#22D3EE"></stop></linearGradient></defs>
+              <g style="animation: mmFloat 4.5s ease-in-out infinite;"><path d="M180,52 L272,98 L180,144 L88,98 Z" stroke="url(#gr9)" stroke-width="2" fill="rgba(139,92,246,0.09)" stroke-linejoin="round" style="filter: drop-shadow(0 0 12px rgba(139,92,246,0.45));"></path></g>
+              <g style="animation: mmFloat 4.5s ease-in-out infinite; animation-delay: .55s;"><path d="M180,104 L272,150 L180,196 L88,150 Z" stroke="rgba(91,140,255,0.65)" stroke-width="1.5" fill="rgba(91,140,255,0.05)" stroke-linejoin="round"></path></g>
+              <g style="animation: mmFloat 4.5s ease-in-out infinite; animation-delay: 1.1s;"><path d="M180,156 L272,202 L180,248 L88,202 Z" stroke="rgba(34,211,238,0.5)" stroke-width="1.5" fill="rgba(34,211,238,0.04)" stroke-linejoin="round"></path></g>
+              <g style="animation: mmFloat 4.5s ease-in-out infinite; animation-delay: 1.65s;"><path d="M180,208 L272,254 L180,300 L88,254 Z" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-linejoin="round"></path></g>
+              <text x="180" y="332" fill="#9a9cb0" font-size="12" font-family="Hanken Grotesk" text-anchor="middle" letter-spacing="2">same roof · same engagement</text>
+            </svg>
+          </div>
         </div>
-        <h3>The Full Stack</h3>
-        <p>Localization, PR, and local-market strategy — everything else your title needs, under the same roof and the same engagement.</p>
-      </article>
+      </div>
+
+      <!-- RIGHT: scrolling service segments -->
+      <div class="wwd-segs">
+        <div class="wwd-seg active" data-seg="0" style="--accent:#22D3EE;">
+          <div class="wwd-num">01</div>
+          <h3 class="wwd-title">Product Evaluation</h3>
+          <p class="wwd-body">We read the docs, play the build, and do actual market comparisons. Positioning and product-market fit get settled before anyone starts actively spending.</p>
+          <div class="wwd-metric">&gt; fit + positioning settled before spend</div>
+        </div>
+        <div class="wwd-seg" data-seg="1" style="--accent:#A78BFA;">
+          <div class="wwd-num">02</div>
+          <h3 class="wwd-title">Go-To-Market Planning</h3>
+          <p class="wwd-body">One timeline that holds the whole campaign: spine, beat calendar, positioning, budget. Every milestone gets an owner, cadence and details.</p>
+          <div class="wwd-metric">&gt; one timeline · owners · cadence</div>
+        </div>
+        <div class="wwd-seg" data-seg="2" style="--accent:#E879F9;">
+          <div class="wwd-num">03</div>
+          <h3 class="wwd-title">Steam Page Conversion</h3>
+          <p class="wwd-body">Capsule suite, copy, and tags rebuilt around what converts, then A/B tested to prove it. Most pages sit at 2-3% visit-to-wishlist. Ours can go above 20%.</p>
+          <div class="wwd-metric">&gt; 2–3% → 20%+ visit-to-wishlist</div>
+        </div>
+        <div class="wwd-seg" data-seg="3" style="--accent:#5B8CFF;">
+          <div class="wwd-num">04</div>
+          <h3 class="wwd-title">Performance Marketing</h3>
+          <p class="wwd-body">Media buying stays in-house, with regular reporting. $1-1.5 per wishlist in top markets, and every campaign builds cohorts that can be retargeted for playtests, demos, and launch.</p>
+          <div class="wwd-metric">&gt; $1–1.5 / wishlist · retargetable cohorts</div>
+        </div>
+        <div class="wwd-seg" data-seg="4" style="--accent:#FBBF24;">
+          <div class="wwd-num">05</div>
+          <h3 class="wwd-title">Asset Production</h3>
+          <p class="wwd-body">Trailers, cutdowns, shorts, and social ship in-house on a tight loop. Hero trailers and 3D key art go to specialist vendors we brief, negotiate, and manage.</p>
+          <div class="wwd-metric">&gt; in-house loop + managed vendors</div>
+        </div>
+        <div class="wwd-seg" data-seg="5" style="--accent:#FB7185;">
+          <div class="wwd-num">06</div>
+          <h3 class="wwd-title">Creator Strategy</h3>
+          <p class="wwd-body">We vet, brief, and run creator campaigns start to finish. Sharp briefs lift engagement up to 50%, at around $5 CPM for short video campaigns against the $80-90 you'd pay for direct deals with creators.</p>
+          <div class="wwd-metric">&gt; +50% engagement · ~$5 CPM vs $80–90</div>
+        </div>
+        <div class="wwd-seg" data-seg="6" style="--accent:#2DD4BF;">
+          <div class="wwd-num">07</div>
+          <h3 class="wwd-title">Steam Ops</h3>
+          <p class="wwd-body">Next Fest, themed fests, playtests, launches, and approvals, from first submission to going live. When timing turns critical, we can go with a direct line to escalate.</p>
+          <div class="wwd-metric">&gt; submission → live · direct escalation</div>
+        </div>
+        <div class="wwd-seg" data-seg="7" style="--accent:#818CF8;">
+          <div class="wwd-num">08</div>
+          <h3 class="wwd-title">Steam Intelligence</h3>
+          <p class="wwd-body">A playbook built on our own campaign data: which traffic triggers fire, how the store funnel behaves, what moves conversion and what only looks like it does.</p>
+          <div class="wwd-metric">&gt; traffic triggers · funnel · conversion</div>
+        </div>
+        <div class="wwd-seg" data-seg="8" style="--accent:#FB923C;">
+          <div class="wwd-num">09</div>
+          <h3 class="wwd-title">China Market Engine</h3>
+          <p class="wwd-body">A native-speaking manager on your account, cultural adaptation rather than straight translation, and Bilibili / Douyin KOL waves timed to your beats.</p>
+          <div class="wwd-metric">&gt; native manager · Bilibili / Douyin KOL</div>
+        </div>
+        <div class="wwd-seg" data-seg="9" style="--accent:#8B5CF6;">
+          <div class="wwd-num">10</div>
+          <h3 class="wwd-title">The Full Stack</h3>
+          <p class="wwd-body">Localization, PR, and local-market strategy. Whatever else the launch needs sits under the same roof, inside the same engagement.</p>
+          <div class="wwd-metric">&gt; localization · PR · one engagement</div>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -288,7 +489,6 @@
               <circle class="wv-dot" cx="400" cy="80" r="5" fill="#CDBEFF"/>
             </g>
           </svg>
-          <span class="why-viz-tag">// TRACEABLE GROWTH</span>
         </div>
       </div>
     </div>
@@ -334,6 +534,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="assets/hero-background.js?v=8"></script>
-<script src="script.js?v=9"></script>
+<script src="script.js?v=13"></script>
 </body>
 </html>

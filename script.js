@@ -418,31 +418,55 @@ addEventListener('scroll', () => {
   });
 })();
 
-/* ---------- Custom cursor ---------- */
-if (!touch) {
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y, shown = false;
+/* ---------- What We Do: active-segment tracking ---------- */
+(function initWWD() {
+  const section = document.querySelector('.wwd');
+  if (!section) return;
+  const segs = [...section.querySelectorAll('[data-seg]')];
+  const anims = [...section.querySelectorAll('[data-anim]')];
+  const counter = section.querySelector('.wwd-counter');
+  const caption = section.querySelector('.wwd-caption');
+  const glow = section.querySelector('.wwd-glow');
+  const N = segs.length;
+  if (!N) return;
 
-  addEventListener('pointermove', (e) => {
-    x = e.clientX; y = e.clientY;
-    if (!shown) { dot.style.opacity = 1; ring.style.opacity = 1; shown = true; }
-  }, { passive: true });
+  const accents = segs.map((s) => s.style.getPropertyValue('--accent').trim());
+  const titles = segs.map((s) => s.querySelector('.wwd-title').textContent);
+  let active = -1;
 
-  (function cursorTick() {
-    requestAnimationFrame(cursorTick);
-    rx += (x - rx) * 0.16;
-    ry += (y - ry) * 0.16;
-    dot.style.transform = `translate(${x - 3}px, ${y - 3}px)`;
-    const s = ring.classList.contains('is-hover') ? 32 : 18;
-    ring.style.transform = `translate(${rx - s}px, ${ry - s}px)`;
-  })();
+  function setActive(i) {
+    if (i === active) return;
+    active = i;
+    const accent = accents[i];
+    for (let k = 0; k < N; k++) segs[k].classList.toggle('active', k === i);
+    for (let k = 0; k < anims.length; k++) anims[k].classList.toggle('active', k === i);
+    if (counter) { counter.textContent = String(i + 1).padStart(2, '0') + ' / 10'; counter.style.color = accent; }
+    if (caption) caption.textContent = (titles[i] || '').toUpperCase();
+    if (glow) glow.style.background = 'radial-gradient(520px 420px at 50% 46%, ' + accent + '14, transparent 70%)';
+  }
 
-  document.querySelectorAll('[data-hover]').forEach((el) => {
-    el.addEventListener('pointerenter', () => ring.classList.add('is-hover'));
-    el.addEventListener('pointerleave', () => ring.classList.remove('is-hover'));
-  });
-}
+  let raf = 0;
+  function onScroll() {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      const mid = innerHeight / 2;
+      let best = -1, bestD = Infinity;
+      for (let k = 0; k < N; k++) {
+        const r = segs[k].getBoundingClientRect();
+        const d = Math.abs((r.top + r.height / 2) - mid);
+        if (d < bestD) { bestD = d; best = k; }
+      }
+      if (best >= 0) setActive(best);
+    });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  if (lenis) lenis.on('scroll', onScroll);
+  setActive(0);
+  onScroll();
+  setTimeout(onScroll, 500);
+})();
 
 /* ---------- Magnetic buttons ---------- */
 if (!touch && !reduced) {
