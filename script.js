@@ -3,6 +3,36 @@
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const touch = matchMedia('(hover: none)').matches;
 
+/* ---------- Cookie consent (Google Consent Mode v2) ---------- */
+(function initCookieConsent() {
+  const CONSENT_KEY = 'mm_cookie_consent';
+  const banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+
+  let stored = null;
+  try { stored = localStorage.getItem(CONSENT_KEY); } catch (e) {}
+
+  if (!stored) {
+    requestAnimationFrame(() => banner.classList.add('is-visible'));
+  }
+
+  function setConsent(state) {
+    try { localStorage.setItem(CONSENT_KEY, state); } catch (e) {}
+    if (window.gtag) {
+      window.gtag('consent', 'update', {
+        ad_storage: state,
+        ad_user_data: state,
+        ad_personalization: state,
+        analytics_storage: state
+      });
+    }
+    banner.classList.remove('is-visible');
+  }
+
+  document.getElementById('cookieAccept')?.addEventListener('click', () => setConsent('granted'));
+  document.getElementById('cookieDecline')?.addEventListener('click', () => setConsent('denied'));
+})();
+
 /* ---------- Smooth scroll (Lenis) ---------- */
 let lenis = null;
 if (!reduced && window.Lenis) {
