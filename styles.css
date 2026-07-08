@@ -415,7 +415,7 @@ main, .site-footer { position: relative; z-index: 1; }
 
 .nums { position: relative; }
 
-.nums-track { position: relative; height: 3800px; }
+.nums-track { position: relative; height: 4560px; }
 
 .nums-pin {
   position: sticky;
@@ -486,6 +486,12 @@ main, .site-footer { position: relative; z-index: 1; }
 }
 
 .nums-row { display: flex; align-items: center; gap: clamp(20px, 4vw, 56px); }
+
+.nums-steam-logo {
+  width: clamp(140px, 20vw, 260px);
+  height: auto;
+  object-fit: contain;
+}
 
 .nums-keyart {
   width: clamp(180px, 26vw, 340px);
