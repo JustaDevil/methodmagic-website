@@ -394,6 +394,20 @@ addEventListener('scroll', () => {
   setTimeout(run, 400);
 })();
 
+/* ---------- Numbers: lazy-load the collage background image ---------- */
+(function initNumsImage() {
+  const el = document.querySelector('.nums-mask-img');
+  if (!el) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      el.classList.add('is-loaded');
+      io.disconnect();
+    });
+  }, { rootMargin: '100px 0px' });
+  io.observe(el);
+})();
+
 /* ---------- Navigation ---------- */
 (function initNav() {
   const header = document.querySelector('.site-header');
