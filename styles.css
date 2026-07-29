@@ -348,21 +348,27 @@ main, .site-footer { position: relative; z-index: 1; }
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #9096ad;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
-.scroll-cue span {
-  display: block;
-  width: 1px;
-  height: 56px;
-  background: linear-gradient(var(--ink), transparent);
-  animation: cue 1.8s ease-in-out infinite;
-  transform-origin: top;
-}
+/* The cookie banner occupies the same bottom-center slot — yield to it while it's up */
+body.consent-open .scroll-cue { opacity: 0; }
 
-@keyframes cue {
-  0% { transform: scaleY(0); opacity: 0; }
-  35% { transform: scaleY(1); opacity: 1; }
-  100% { transform: scaleY(1) translateY(56px); opacity: 0; }
+.scroll-cue-arrow {
+  font-size: 18px;
+  line-height: 1;
+  color: #8b5cf6;
+  animation: numsBounce 1.6s ease-in-out infinite;
 }
 
 /* ---------- Marquee ---------- */
@@ -946,7 +952,7 @@ main, .site-footer { position: relative; z-index: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .scroll-cue span, .grain, .aurora, .site-bg-img, .nums-mask-img, .nums-hint-arrow { animation: none; }
+  .marquee-track, .scroll-cue-arrow, .grain, .aurora, .site-bg-img, .nums-mask-img, .nums-hint-arrow { animation: none; }
   html { scroll-behavior: auto; }
 }
 

@@ -13,6 +13,7 @@ const touch = matchMedia('(hover: none)').matches;
   try { stored = localStorage.getItem(CONSENT_KEY); } catch (e) {}
 
   if (!stored) {
+    document.body.classList.add('consent-open');
     requestAnimationFrame(() => banner.classList.add('is-visible'));
   }
 
@@ -27,6 +28,7 @@ const touch = matchMedia('(hover: none)').matches;
       });
     }
     banner.classList.remove('is-visible');
+    document.body.classList.remove('consent-open');
   }
 
   document.getElementById('cookieAccept')?.addEventListener('click', () => setConsent('granted'));
