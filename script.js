@@ -517,12 +517,16 @@ addEventListener('scroll', () => {
 
 /* ---------- Magnetic buttons ---------- */
 if (!touch && !reduced) {
+  const MAG_STRENGTH = 0.12;  /* was 0.28 */
+  const MAG_MAX = 6;          /* px — keeps the pull subtle on large pills */
   document.querySelectorAll('.magnetic').forEach((el) => {
     el.addEventListener('pointermove', (e) => {
       const r = el.getBoundingClientRect();
       const dx = e.clientX - (r.left + r.width / 2);
       const dy = e.clientY - (r.top + r.height / 2);
-      el.style.transform = `translate(${dx * 0.28}px, ${dy * 0.28}px)`;
+      /* Gentle pull, capped so neighbouring buttons can never drift into each other. */
+      const cap = (v) => Math.max(-MAG_MAX, Math.min(MAG_MAX, v));
+      el.style.transform = `translate(${cap(dx * MAG_STRENGTH)}px, ${cap(dy * MAG_STRENGTH)}px)`;
     });
     el.addEventListener('pointerleave', () => {
       el.style.transform = '';

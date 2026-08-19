@@ -931,7 +931,7 @@ body.consent-open .scroll-cue { opacity: 0; }
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
   justify-content: center;
 }
 
