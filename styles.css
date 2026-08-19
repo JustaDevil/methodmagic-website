@@ -885,62 +885,6 @@ body.consent-open .scroll-cue { opacity: 0; }
   color: var(--muted);
 }
 
-/* ---------- Book a meeting ---------- */
-
-.book-head { max-width: 60ch; }
-
-.book-title {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(2rem, 4.2vw, 3.2rem);
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-  text-transform: uppercase;
-  color: #ECEDF4;
-}
-
-.book-lead {
-  margin: 1.1rem 0 0;
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-  line-height: 1.7;
-  color: #b3b6c6;
-}
-
-.book-frame {
-  margin-top: clamp(2rem, 5vh, 3.2rem);
-  max-width: 960px;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-}
-
-.book-frame iframe {
-  display: block;
-  width: 100%;
-  height: clamp(560px, 76vh, 740px);
-  border: 0;
-  border-radius: 10px;
-  background: #fff;
-}
-
-.book-fallback {
-  margin-top: 1.2rem;
-  font-size: 0.98rem;
-  color: var(--muted);
-}
-
-.book-fallback a {
-  color: var(--blue-soft);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(111, 162, 255, 0.35);
-  transition: color 0.25s ease, border-color 0.25s ease;
-}
-
-.book-fallback a:hover { color: var(--ink); border-bottom-color: var(--ink); }
-
 /* ---------- Contact ---------- */
 
 .contact {
@@ -982,6 +926,29 @@ body.consent-open .scroll-cue { opacity: 0; }
   font-size: 1.1rem;
   margin: 1.6rem 0 3rem;
 }
+
+.contact-actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-ghost {
+  background: none;
+  border: 1px solid rgba(242, 241, 252, 0.28);
+  box-shadow: none;
+  color: var(--ink);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--ink);
+  box-shadow: none;
+}
+
 
 /* ---------- Footer ---------- */
 
