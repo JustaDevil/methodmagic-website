@@ -459,7 +459,7 @@ addEventListener('scroll', () => {
       if (a) a.classList.add('active');
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  ['results', 'services', 'why', 'clients', 'contact'].forEach((id) => {
+  ['results', 'services', 'why', 'clients', 'book', 'contact'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) spy.observe(el);
   });
