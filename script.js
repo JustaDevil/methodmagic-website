@@ -47,7 +47,12 @@ if (!reduced && window.Lenis) {
 (function initMarquee() {
   const track = document.getElementById('marqueeTrack');
   if (!track) return;
-  const PHRASE = 'QUALITY COMMUNICATIONS  //  IMPACTFUL MARKETING  //  WISHLIST GROWTH  //  ';
+  /* Source of truth lives in the HTML (#marqueeText) so the copy is crawlable
+     without JS; this only formats it for the scrolling strip. */
+  const seed = document.getElementById('marqueeText');
+  const SEP = '\u00A0\u00A0//\u00A0\u00A0';
+  const PHRASE = ((seed && seed.textContent.trim()) || 'Quality communications // Impactful marketing // Wishlist growth')
+    .replace(/\s*\/\/\s*/g, SEP) + SEP;
   const SPEED = 70; /* px per second */
 
   function build() {
