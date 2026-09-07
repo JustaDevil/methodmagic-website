@@ -208,8 +208,10 @@ if (!reduced && window.Lenis) {
         wasGlow = glow > 0.003;
       }
 
-      camera.position.x += (mx * 1.4 - camera.position.x) * 0.04;
-      camera.position.y += (2.2 - my * 0.8 - camera.position.y) * 0.04;
+      /* Gentle parallax only. Moving the camera while lookAt() stays fixed reads as
+         the whole field swivelling, so keep the travel small. */
+      camera.position.x += (mx * 0.45 - camera.position.x) * 0.03;
+      camera.position.y += (2.2 - my * 0.26 - camera.position.y) * 0.03;
       camera.lookAt(0, -0.5, 0);
       renderer.render(scene, camera);
     }
@@ -245,24 +247,34 @@ if (window.gsap) {
   });
 
   if (!reduced) {
-    /* Hero intro */
-    gsap.from('.hero-logo-img', {
-      opacity: 0,
-      y: 50,
-      scale: 0.96,
-      duration: 1.3,
-      ease: 'power4.out',
-      delay: 0.15
-    });
-    gsap.from('.hero-tagline, .hero-sub', {
-      opacity: 0,
-      y: 24,
-      duration: 1,
-      ease: 'power3.out',
-      stagger: 0.15,
-      delay: 0.7
-    });
-    gsap.from('.site-header', { opacity: 0, y: -20, duration: 0.8, delay: 1 });
+    /* Hero intro.
+       html.pre-anim (set inline in <head>) holds the hero hidden until GSAP is
+       ready, so it can no longer paint at full opacity and then re-animate.
+       fromTo renders its start state immediately, so the tweens are built first
+       and the gate is released only once the inline opacity:0 is in place. */
+    function playHeroIntro() {
+      gsap.fromTo('.hero-logo-img',
+        { opacity: 0, y: 50, scale: 0.96 },
+        { opacity: 1, y: 0, scale: 1, duration: 1.3, ease: 'power4.out', delay: 0.1 });
+      gsap.fromTo('.hero-tagline, .hero-sub',
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.15, delay: 0.55 });
+      gsap.fromTo('.site-header',
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.8, delay: 0.8 });
+      document.documentElement.classList.remove('pre-anim');
+    }
+
+    /* Wait for the webfonts so the tagline can't reflow mid-animation, but never
+       hold the hero hostage to a slow font request. */
+    if (document.fonts && document.fonts.ready) {
+      let started = false;
+      const once = () => { if (!started) { started = true; playHeroIntro(); } };
+      document.fonts.ready.then(once);
+      setTimeout(once, 1200);
+    } else {
+      playHeroIntro();
+    }
 
     /* Hero parallax out */
     gsap.to('.hero-content', {

@@ -285,6 +285,17 @@ main, .site-footer { position: relative; z-index: 1; }
 
 /* ---------- Hero ---------- */
 
+/* Held hidden until the GSAP intro is ready (see playHeroIntro) so the hero
+   never paints, then snaps back to animate in. Scoped to motion-friendly
+   visitors: with reduced motion there is no intro, so nothing is hidden. */
+@media (prefers-reduced-motion: no-preference) {
+  html.pre-anim .hero-logo-img,
+  html.pre-anim .hero-tagline,
+  html.pre-anim .hero-sub,
+  html.pre-anim .site-header { opacity: 0; }
+}
+
+
 .hero {
   position: relative;
   min-height: 100svh;

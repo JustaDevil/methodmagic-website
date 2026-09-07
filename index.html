@@ -34,6 +34,17 @@
   gtag('config', 'G-0NHVFMC9NM');
 </script>
 
+<!-- Hold the hero hidden until the intro animation is ready (prevents a
+     flash of the un-animated hero). Failsafe clears it if scripts never run. -->
+<script>
+  (function () {
+    var d = document.documentElement;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    d.classList.add('pre-anim');
+    setTimeout(function () { d.classList.remove('pre-anim'); }, 2500);
+  })();
+</script>
+
 <title>METHOD//MAGIC - A Game Success Company</title>
 <meta name="description" content="Embedded game marketing & publishing solutions for studios of every size, from indie to AAA. Steam, paid UA, creators - under one knowledge framework.">
 <link rel="canonical" href="https://methodmagic.is/">
@@ -65,7 +76,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=24">
+<link rel="stylesheet" href="styles.css?v=25">
 </head>
 <body>
 
@@ -617,6 +628,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="assets/hero-background.js?v=8"></script>
-<script src="script.js?v=22"></script>
+<script src="script.js?v=23"></script>
 </body>
 </html>
