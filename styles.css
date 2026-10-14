@@ -499,9 +499,12 @@ body.consent-open .scroll-cue { opacity: 0; }
 
 .nums-cap {
   margin: 0;
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: clamp(24px, 2.3vw, 34px);
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: #8e93a9;
-  max-width: 22ch;
+  max-width: 24ch;
 }
 
 .nums-row { display: flex; align-items: center; gap: clamp(20px, 4vw, 56px); }
