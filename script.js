@@ -228,6 +228,7 @@ if (!reduced && window.Lenis) {
 })();
 
 /* ---------- GSAP ---------- */
+let clientFloat = null; /* paused while the clients section is off screen */
 if (window.gsap) {
   gsap.registerPlugin(ScrollTrigger);
   if (lenis) {
@@ -302,12 +303,12 @@ if (window.gsap) {
       gsap.set(wvLine, { strokeDasharray: len, strokeDashoffset: len });
       gsap.set('.wv-area', { opacity: 0 });
       gsap.set('.wv-bar', { scaleY: 0 });
-      gsap.set('.wv-dotwrap', { opacity: 0 });
+      gsap.set('.wv-dotwrap, .wv-ring-wrap', { opacity: 0 });
       gsap.timeline({ scrollTrigger: { trigger: '.why-viz', start: 'top 78%' } })
         .to('.wv-bar', { scaleY: 1, duration: 0.8, ease: 'power3.out', stagger: 0.09 })
         .to('.wv-area', { opacity: 1, duration: 0.8 }, '-=0.5')
         .to(wvLine, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' }, '-=0.7')
-        .to('.wv-dotwrap', { opacity: 1, duration: 0.4 }, '-=0.25');
+        .to('.wv-dotwrap, .wv-ring-wrap', { opacity: 1, duration: 0.4 }, '-=0.25');
     }
 
     /* Client logos: staggered entrance + idle float */
@@ -319,7 +320,7 @@ if (window.gsap) {
       stagger: 0.16,
       scrollTrigger: { trigger: '.client-row', start: 'top 88%' }
     });
-    gsap.to('.client img', {
+    clientFloat = gsap.to('.client img', {
       y: -9,
       duration: 2.6,
       ease: 'sine.inOut',
@@ -366,6 +367,7 @@ addEventListener('scroll', () => {
   const track = document.getElementById('numsTrack');
   if (!track) return;
   const slides = [...track.querySelectorAll('[data-slide]')];
+  const cols = slides.map((s) => s.querySelector('.nums-col') || s);
   const dots = [...track.querySelectorAll('[data-dot]')];
   const hint = track.querySelector('[data-hint]');
   const N = slides.length;
@@ -383,20 +385,22 @@ addEventListener('scroll', () => {
       const ad = Math.abs(d);
       const vis = ad < 1.05;
       s.style.visibility = vis ? 'visible' : 'hidden';
+      s.classList.toggle('is-out', !vis);
       if (!vis) continue;
       const a = clamp(d, -1, 1);
       const dir = i % 2 === 0 ? 1 : -1;
       s.style.opacity = String(clamp(1 - ad * 1.15, 0, 1));
       if (reduced) {
         s.style.transform = 'none';
-        s.style.filter = 'none';
+        cols[i].style.filter = 'none';
       } else {
         s.style.transform =
           'translateX(' + (dir * d * 55) + '%) translateY(' + (d * 18) + '%) ' +
           'rotateY(' + (dir * -a * 62) + 'deg) rotateX(' + (-a * 24) + 'deg) ' +
           'translateZ(' + (-ad * 160) + 'px)';
-        /* light blur only — capped low so blurring the keyart image doesn't stutter */
-        s.style.filter = ad > 0.04 ? 'blur(' + Math.min(ad * 2.2, 2.4).toFixed(2) + 'px)' : 'none';
+        /* Light blur, capped low. It goes on the content column, not the slide:
+           slides are full-viewport, and a blur costs by the area it covers. */
+        cols[i].style.filter = ad > 0.04 ? 'blur(' + Math.min(ad * 2.2, 2.4).toFixed(2) + 'px)' : 'none';
       }
     }
     const act = clamp(Math.round(idx), 0, N - 1);
@@ -552,6 +556,20 @@ if (!touch && !reduced) {
     });
   });
 }
+
+/* ---------- Park decorative loops while their section is off screen ---------- */
+(function initOffscreenPause() {
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      en.target.classList.toggle('is-offscreen', !en.isIntersecting);
+      if (en.target.id === 'clients' && clientFloat) {
+        en.isIntersecting ? clientFloat.resume() : clientFloat.pause();
+      }
+    });
+  }, { rootMargin: '150px 0px' });
+  document.querySelectorAll('main > section, .marquee').forEach((el) => io.observe(el));
+})();
 
 /* ---------- Animated site background (below hero) ---------- */
 if (!reduced && window.MethodMagicHeroBG) {

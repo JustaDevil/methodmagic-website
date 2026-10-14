@@ -676,7 +676,7 @@ body.consent-open .scroll-cue { opacity: 0; }
   to { transform: translateY(10px); }
 }
 
-.why-viz svg {
+.wv-chart {
   width: 100%;
   height: auto;
   display: block;
@@ -685,9 +685,23 @@ body.consent-open .scroll-cue { opacity: 0; }
 
 .wv-bar { transform-box: fill-box; transform-origin: bottom; }
 
+/* The pulse ring sits outside the chart SVG: animating it inside would force
+   the chart's 55px drop-shadow to re-render every frame. Placed over the end
+   dot (400,80 in the chart's 440x380 viewBox). */
+.wv-ring-wrap {
+  position: absolute;
+  left: calc(390 / 440 * 100%);
+  top: calc(70 / 380 * 100%);
+  width: calc(20 / 440 * 100%);
+  height: calc(20 / 380 * 100%);
+  pointer-events: none;
+}
+
 .wv-ring {
-  transform-box: fill-box;
-  transform-origin: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%;
   animation: wvPulse 2.3s ease-out infinite;
 }
 
@@ -882,6 +896,7 @@ body.consent-open .scroll-cue { opacity: 0; }
   width: auto;
   filter: invert(1) brightness(1.1) opacity(0.72);
   transition: filter 0.35s ease;
+  will-change: transform; /* own layer: the GSAP float moves it without re-filtering */
 }
 
 .client:hover img {
@@ -913,7 +928,6 @@ body.consent-open .scroll-cue { opacity: 0; }
   background:
     radial-gradient(46% 46% at 30% 60%, rgba(84, 42, 214, 0.3), transparent 70%),
     radial-gradient(40% 42% at 72% 38%, rgba(15, 84, 205, 0.26), transparent 70%);
-  filter: blur(10px);
   animation: aurora 9s ease-in-out infinite alternate;
 }
 
@@ -979,6 +993,16 @@ body.consent-open .scroll-cue { opacity: 0; }
 /* ---------- Reveal base (JS adds motion) ---------- */
 
 .split .char { display: inline-block; will-change: transform; }
+
+/* ---------- Park loops nobody can see ----------
+   Browsers keep ticking CSS animations off screen, and most of these animate
+   SVG internals that repaint every frame. Paused: sections scrolled away
+   (.is-offscreen, set by script.js), the nine inactive What We Do panels, and
+   Numbers slides that are out of the reel. !important because the panel art
+   declares its animations inline. */
+.is-offscreen, .is-offscreen *,
+.wwd-anim:not(.active), .wwd-anim:not(.active) *,
+.nums-slide.is-out * { animation-play-state: paused !important; }
 
 /* ---------- Responsive ---------- */
 

@@ -76,7 +76,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=25">
+<link rel="stylesheet" href="styles.css?v=26">
 </head>
 <body>
 
@@ -535,7 +535,7 @@
 
       <div class="why-viz" data-reveal aria-hidden="true">
         <div class="why-viz-inner">
-          <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg">
+          <svg class="wv-chart" viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="wvLine" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0" stop-color="#FBBF24"/>
@@ -568,10 +568,14 @@
             <path class="wv-area" d="M69,320 L69,262 129,236 189,242 249,196 309,150 369,100 400,80 L400,320 Z" fill="url(#wvArea)"/>
             <path class="wv-line" d="M69,262 129,236 189,242 249,196 309,150 369,100 400,80" fill="none" stroke="url(#wvLine)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             <g class="wv-dotwrap">
-              <circle class="wv-ring" cx="400" cy="80" r="7" fill="none" stroke="#34D399" stroke-width="2"/>
               <circle class="wv-dot" cx="400" cy="80" r="5" fill="#D1FAE5"/>
             </g>
           </svg>
+          <div class="wv-ring-wrap">
+            <svg class="wv-ring" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="7" fill="none" stroke="#34D399" stroke-width="2"/>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -628,6 +632,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="assets/hero-background.js?v=8"></script>
-<script src="script.js?v=23"></script>
+<script src="script.js?v=24"></script>
 </body>
 </html>
