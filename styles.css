@@ -499,7 +499,7 @@ body.consent-open .scroll-cue { opacity: 0; }
 
 .nums-cap {
   margin: 0;
-  font-size: clamp(15px, 2vw, 28px);
+  font-size: clamp(20px, 2vw, 28px);
   color: #8e93a9;
   max-width: 22ch;
 }
@@ -612,6 +612,14 @@ body.consent-open .scroll-cue { opacity: 0; }
 @keyframes numsBounce {
   0%, 100% { transform: translateY(0); opacity: 0.5; }
   50% { transform: translateY(7px); opacity: 1; }
+}
+
+/* On phones a stat fills only the top third of the pinned screen, so when the
+   reel releases, the rest of that screen scrolls by empty before What We Do.
+   Let the next section rise into that empty lower half instead (the pin is
+   transparent, and slides only travel upward out of the way). */
+@media (max-width: 900px) {
+  .nums { margin-bottom: -50vh; margin-bottom: -50svh; }
 }
 
 /* ---------- Why Us ---------- */
