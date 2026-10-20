@@ -1001,6 +1001,16 @@ body.consent-open .scroll-cue { opacity: 0; }
 
 .site-footer p { color: var(--muted); font-size: 0.85rem; }
 
+.footer-legal {
+  flex-basis: 100%;
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
 /* ---------- Reveal base (JS adds motion) ---------- */
 
 .split .char { display: inline-block; will-change: transform; }
